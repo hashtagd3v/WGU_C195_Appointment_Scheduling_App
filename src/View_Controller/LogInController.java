@@ -11,9 +11,8 @@ public class LogInController {
     public TextField userIdText;
     public TextField passwordText;
 
-    @FXML
-    void onActionLogIn(ActionEvent event) {
+
+    public void onActionLogIn(ActionEvent actionEvent) {
 
     }
-
 }
