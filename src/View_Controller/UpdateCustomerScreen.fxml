@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.UpdateCustomerController">
    <children>
       <AnchorPane prefHeight="150.0" prefWidth="600.0">
          <children>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <Label text="Add Customer">
+                  <Label text="Update Customer">
                      <HBox.margin>
                         <Insets left="20.0" top="15.0" />
                      </HBox.margin>
@@ -33,7 +32,7 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="addCustomerIDText" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0">
+                  <TextField fx:id="updateIDText" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0">
                      <HBox.margin>
                         <Insets top="15.0" />
                      </HBox.margin>
@@ -43,7 +42,7 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="addCustomerNameText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
+                  <TextField fx:id="updateNameText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                      <HBox.margin>
                         <Insets right="20.0" top="15.0" />
                      </HBox.margin>
@@ -59,7 +58,7 @@
                   <Insets left="20.0" top="20.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="addCustomerAddressText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
+            <TextField fx:id="updateAddressText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
@@ -69,7 +68,7 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </Label>
-            <ComboBox fx:id="addCustomerFirstLdCombo" prefHeight="25.0" prefWidth="150.0">
+            <ComboBox fx:id="updateFirstLdCombo" prefHeight="25.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
@@ -83,7 +82,7 @@
                   <Insets left="20.0" top="20.0" />
                </HBox.margin>
             </Label>
-            <ComboBox fx:id="addCustomerCountryCombo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+            <ComboBox fx:id="updateCountryCombo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
@@ -93,7 +92,7 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="addCustomerPostalText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0">
+            <TextField fx:id="updatePostalText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
@@ -107,7 +106,7 @@
                   <Insets left="20.0" top="20.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="addCustomerPhoneText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+            <TextField fx:id="updatePhoneText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
@@ -116,8 +115,13 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionAddCustomerCancelBtn" prefHeight="25.0" prefWidth="100.0" text="Cancel" />
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionAddCustomerAddBtn" prefHeight="25.0" prefWidth="100.0" text="Add">
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateCustomerCancelBtn" prefHeight="25.0" prefWidth="100.0" text="Cancel" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateCustomerDeleteBtn" prefHeight="25.0" prefWidth="100.0" text="Delete">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateCustomerBtn" prefHeight="25.0" prefWidth="100.0" text="Update">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
