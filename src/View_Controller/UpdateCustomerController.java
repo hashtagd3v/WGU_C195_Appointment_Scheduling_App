@@ -23,7 +23,7 @@ public class UpdateCustomerController {
     }
 
     public void onActionUpdateCustomerBtn(ActionEvent actionEvent) {
-        
+
     }
 
 }
