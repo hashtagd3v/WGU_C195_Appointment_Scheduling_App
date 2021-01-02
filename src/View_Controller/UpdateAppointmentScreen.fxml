@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.UpdateAppointmentController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label text="Update Appointment">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Appt ID:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptIDText" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="Type:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptTypeText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Title:">
+               <HBox.margin>
+                  <Insets left="15.0" right="17.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptTitleText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="Description:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptDescriptionText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Location:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptLocationText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="Contact:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <ComboBox fx:id="updateApptContactCombo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+      <HBox layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Start Date:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="updateApptStartDatePicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Label text="Start Time:">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Spinner fx:id="updateApptStartHour" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+            <Spinner fx:id="updateApptStartMin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+            <Spinner fx:id="updateApptStartAmPm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+         </children>
+      </HBox>
+      <HBox layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="End Date:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="updateApptEndDatePicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0">
+               <HBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Label text="End Time:">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Spinner fx:id="updateApptEndHour" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+            <Spinner fx:id="updateApptEndMin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+            <Spinner fx:id="updateApptEndAmPm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Spinner>
+         </children>
+      </HBox>
+      <HBox layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Customer ID:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptCustomerIDText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="User ID:">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="updateApptUserIDText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateApptCancelBtn" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateApptDeleteBtn" prefHeight="25.0" prefWidth="80.0" text="Delete" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionUpdateApptBtn" prefHeight="25.0" prefWidth="80.0" text="Update">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
