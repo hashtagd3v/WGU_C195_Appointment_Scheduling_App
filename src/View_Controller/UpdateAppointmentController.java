@@ -36,5 +36,5 @@ public class UpdateAppointmentController {
     public void onActionUpdateApptBtn(ActionEvent actionEvent) {
 
     }
-    
+
 }
