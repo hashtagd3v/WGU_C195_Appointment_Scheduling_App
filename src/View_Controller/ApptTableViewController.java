@@ -27,6 +27,10 @@ public class ApptTableViewController {
 
     }
 
+    public void onActionFilterAllBtn(ActionEvent actionEvent) {
+
+    }
+
     public void onActionApptBackBtn(ActionEvent actionEvent) {
 
     }
