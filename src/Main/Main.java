@@ -18,7 +18,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    //TODO: Keep adding comments for javadoc!!!.
+    //TODO: Keep adding comments for javadoc!!!
     /** This is the main method.
      * This is the method that gets called first when you run the program.
      * The Log In Screen pops up where user inputs their user ID and password when main method is run.
