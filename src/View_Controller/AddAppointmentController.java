@@ -1,35 +1,56 @@
 package View_Controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
+
+/** Add Appointment screen enables user to add new appointment. Users fill out a form with text fields for
+ * title of the appointment, description and location. New Appointment ID is auto generated in the Appt ID
+ * text field and is disabled. There are also combo boxes for Customer ID, User ID and Contact to be assigned
+ * to the appointment. This enables user to choose from pre-existing list of choices. There is also a date picker
+ * for user to select date of appointment, and spinner boxes for user to select start and end time for appointment.*/
 public class AddAppointmentController {
 
     public TextField addApptIDText;
-    public TextField addApptTypeText;
     public TextField addApptTitleText;
     public TextField addApptDescriptionText;
     public TextField addApptLocationText;
     public ComboBox addApptContactCombo;
-    public DatePicker addApptStartDatePicker;
     public Spinner addApptStartHour;
     public Spinner addApptStartMin;
-    public Spinner addApptStartAmPm;
-    public DatePicker addApptEndDatePicker;
     public Spinner addApptEndHour;
     public Spinner addApptEndMin;
-    public Spinner addApptEndAmPm;
-    public TextField addApptCustomerIDText;
-    public TextField addApptUserIDText;
+    public ComboBox addApptCustomerIDCombo;
+    public ComboBox addApptUserIDCombo;
+    public ComboBox addApptTypeCombo;
+    public DatePicker addApptDatePicker;
 
-    public void onActionAddApptCancelBtn(ActionEvent actionEvent) {
+    Stage stage;
+    Parent scene;
+
+    /** Cancel button switches user back to previous screen: Appointment Table View list.*/
+    public void onActionAddApptCancelBtn(ActionEvent actionEvent) throws IOException {
+
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 
-    public void onActionAddApptBtn(ActionEvent actionEvent) {
+    /** Add button enables user to add new appointment to database. This also switches user back to
+     * previous screen: Appointment Table View list.*/
+    public void onActionAddApptBtn(ActionEvent actionEvent) throws IOException {
+
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 
