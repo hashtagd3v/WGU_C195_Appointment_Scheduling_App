@@ -16,7 +16,6 @@ import java.io.IOException;
  * to add, update and delete a customer here.*/
 public class CustomerTableViewController {
 
-    public TextField customerListSearchText;
     public TableView customerTableView;
     public TableColumn customerIdCol;
     public TableColumn customerNameCol;
