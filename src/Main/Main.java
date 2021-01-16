@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.DBConnection;
 
+import java.sql.Connection;
+
 /** This is an appointment scheduling app.*/
 public class Main extends Application {
 
@@ -24,7 +26,7 @@ public class Main extends Application {
      * The Log In Screen pops up where user inputs their user ID and password when main method is run.
      * */
     public static void main(String[] args) {
-        DBConnection.startConnection();
+        Connection conn = DBConnection.getConnection();
         launch(args);
         DBConnection.closeConnection();
     }

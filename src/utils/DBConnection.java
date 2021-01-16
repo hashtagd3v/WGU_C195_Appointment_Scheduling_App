@@ -16,12 +16,12 @@ public class DBConnection {
 
     //Driver and Connection Interface Reference
     private static final String MYSQLJDBCDriver = "com.mysql.cj.jdbc.Driver";
-    private static Connection connection = null; //TODO
+    public static Connection connection;
 
     private static final String userName = "U05nOb";
     private static final String password = "53688555917";
 
-    public static Connection startConnection() {
+    public static Connection getConnection() {
         try {
             Class.forName(MYSQLJDBCDriver);
             connection = DriverManager.getConnection(jdbcURL, userName, password);
