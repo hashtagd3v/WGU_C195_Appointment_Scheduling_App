@@ -10,4 +10,11 @@ public class FirstLevelDivision {
         this.firstLevelDivName = firstLevelDivName;
     }
 
+    @Override
+    public String toString() {
+        return (Integer.toString(firstLevelDivId) + " " + firstLevelDivName);
+    }
+
+    //FIXME: How do I show just the firstLevelDiveName?; fix connection successful appearing multiple times!
+
 }

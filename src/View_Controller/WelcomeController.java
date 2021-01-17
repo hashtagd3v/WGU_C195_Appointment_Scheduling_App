@@ -41,7 +41,6 @@ public class WelcomeController {
     /** Exit button terminates app.*/
     public void onActionExit(ActionEvent actionEvent) {
 
-        DBConnection.closeConnection();
         System.exit(0);
 
     }

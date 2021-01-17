@@ -1,5 +1,6 @@
 package View_Controller;
 
+import Model.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import static DBAccess.DBCustomer.getAllCustomers;
  * to add, update and delete a customer here.*/
 public class CustomerTableViewController implements Initializable {
 
-    public TableView customerTableView;
+    public TableView<Customer> customerTableView;
     public TableColumn customerIdCol;
     public TableColumn customerNameCol;
     public TableColumn customerAddressCol;
