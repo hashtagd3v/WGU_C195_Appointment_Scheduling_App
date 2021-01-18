@@ -6,19 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import utils.DBConnection;
 
 import java.io.IOException;
 
-/** Welcome screen enables user to choose between Customers and Appointments button. This takes user to either
- * a list of customers or a list of appointments. Welcome screen also has an exit button that enables user to
- * terminate app.*/
+/** This class is the controller for Welcome.fxml screen.
+ * Welcome screen enables user to choose between Customers and Appointments button.
+ * This takes user to either a list of customers or a list of appointments. Welcome
+ * screen also has an exit button that enables user to terminate app.*/
 public class WelcomeController {
 
     Stage stage;
     Parent scene;
 
-    /** Clicking on Customers button will have program switch screens to Customers table view list.*/
+    /** This method takes user to customer table view list.
+     * Clicking on Customers button will have program switch screens
+     * to Customers table view list.
+     * @param actionEvent the event or mouse click on Customers button.*/
     public void onActionShowCustomerList(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -28,7 +31,10 @@ public class WelcomeController {
 
     }
 
-    /** Clicking on Appointments button will have program switch screens to Appointments table view list.*/
+    /** This method takes user to appointment table view list.
+     * Clicking on Appointments button will have program switch screens
+     * to Appointments table view list.
+     * @param actionEvent the event or mouse click on Appointments button.*/
     public void onActionShowAppointmentList(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -38,7 +44,8 @@ public class WelcomeController {
 
     }
 
-    /** Exit button terminates app.*/
+    /** This method terminates the app.
+     * Exit button closes app.*/
     public void onActionExit(ActionEvent actionEvent) {
 
         System.exit(0);

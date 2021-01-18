@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 import static DBAccess.DBCountry.getAllCountry;
 import static DBAccess.DBFirstLevelDiv.getAllFirstLevelDiv;
 
-/** Add Customer screen enables user to add new customer to the database. Screen is made up of a form that
+/** This class Customer screen enables user to add new customer to the database. Screen is made up of a form that
  * has text fields for Customer ID, Name, Address, Postal Code, and Phone Number. It also has two combo boxes.
  * One for First Level Division and one for Country which allows user to choose from the list.*/
 public class AddCustomerController implements Initializable {
@@ -35,6 +35,11 @@ public class AddCustomerController implements Initializable {
     Stage stage;
     Parent scene;
 
+    /** This method initializes add customer screen with list of first level division and country
+     * from database to combo boxes.
+     * Combo boxes show user choices of available first level division and countries.
+     * @param url the location
+     * @param resourceBundle the resources.*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -43,7 +48,9 @@ public class AddCustomerController implements Initializable {
 
     }
 
-    /** When button is clicked, this switches screen back to Customer table view list.*/
+    /** This method allows user to cancel adding customer.
+     * When button is clicked, this switches screen back to Customer table view list.
+     * @param actionEvent the event or mouse click on Cancel button.*/
     public void onActionAddCustomerCancelBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -53,9 +60,11 @@ public class AddCustomerController implements Initializable {
 
     }
 
-    /** When button is clicked, user is able to add customer information to database.
+    /** This method allows user to save customer information.
+     * When button is clicked, user is able to add customer information to database.
      * Screen will switch back to Customer table view list with new customer added to
-     * the list of customers.*/
+     * the list of customers.
+     * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddCustomerAddBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -64,4 +73,5 @@ public class AddCustomerController implements Initializable {
         stage.show();
 
     }
+
 }

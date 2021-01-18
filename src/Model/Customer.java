@@ -1,5 +1,6 @@
 package Model;
 
+/** This is the customer class.*/
 public class Customer {
 
     private int customerId;
@@ -20,30 +21,37 @@ public class Customer {
         this.countryId = countryId;
     }
 
+    /** @return Returns customer Id.*/
     public int getCustomerId() {
         return customerId;
     }
 
+    /** @return Returns customer name.*/
     public String getCustomerName() {
         return customerName;
     }
 
+    /** @return Returns customer address.*/
     public String getCustomerAddress() {
         return customerAddress;
     }
 
+    /** @return Returns customer postal code.*/
     public String getPostalCode() {
         return postalCode;
     }
 
+    /** @return Returns customer phone number.*/
     public String getCustomerPhoneNo() {
         return customerPhoneNo;
     }
 
+    /** @return Returns customer division Id.*/
     public int getDivisionId() {
         return divisionId;
     }
 
+    /** @return Returns customer country.*/
     public int getCountryId() {
         return countryId;
     }

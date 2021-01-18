@@ -18,8 +18,8 @@ import java.util.ResourceBundle;
 
 import static DBAccess.DBCustomer.getAllCustomers;
 
-/** Customer Table View Screen shows a table view list of customers in the database. Users are able
- * to add, update and delete a customer here.*/
+/** This class enables users able to add, update and delete a customer here.
+ * Customer Table View Screen shows a table view list of customers from the database.*/
 public class CustomerTableViewController implements Initializable {
 
     public TableView<Customer> customerTableView;
@@ -34,7 +34,11 @@ public class CustomerTableViewController implements Initializable {
     Stage stage;
     Parent scene;
 
-    /** When screen comes on, this shows the table view list of customers from database.*/
+    /** This method initializes the screen to show customer table view list.
+     * When screen comes on, this shows the table view list of customers downloaded
+     * from the database.
+     * @param url the location
+     * @param resourceBundle the resources.*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -49,7 +53,9 @@ public class CustomerTableViewController implements Initializable {
 
     }
 
-    /** Goes back to Welcome screen when clicked.*/
+    /** This method allows user to go back to Welcome screen.
+     * Goes back to Welcome screen when clicked.
+     * @param actionEvent the event or mouse click on Back button.*/
     public void onActionCustomerBackBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -58,7 +64,9 @@ public class CustomerTableViewController implements Initializable {
         stage.show();
 
     }
-    /** When button is clicked, opens up Add Customer screen.*/
+    /** This method allows user to add customers.
+     * When button is clicked, opens up Add Customer screen.
+     * @param actionEvent the event or mouse click on Add button.*/
     public void onActionCustomerAddBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -68,8 +76,10 @@ public class CustomerTableViewController implements Initializable {
 
     }
 
-    /** When button is clicked, opens up Update Customer screen. This enables user to update information
-     * for customer selected in table view list.*/
+    /** This method allows user to select customer and update information.
+     * When button is clicked, opens up Update Customer screen. This enables
+     * user to update information for customer selected in table view list.
+     * @param actionEvent the event or mouse click on Update button.*/
     public void onActionCustomerUpdateBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
@@ -79,7 +89,10 @@ public class CustomerTableViewController implements Initializable {
 
     }
 
-    /** When button is clicked, this will enable user to delete selected customer from table view list.*/
+    /** This method enables user to delete selected customer.
+     * When button is clicked, this will enable user to delete
+     * selected customer from table view list.
+     * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionCustomerDeleteBtn(ActionEvent actionEvent) {
 
     }

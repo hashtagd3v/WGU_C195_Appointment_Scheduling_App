@@ -9,8 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/** This is the Customer DB access class.
+ * This class obtains a list of all customers from customers database table.*/
 public class DBCustomer {
 
+    /**@return Returns array list of all customers.*/
     public static ObservableList<Customer> getAllCustomers() {
         ObservableList<Customer> customerList = FXCollections.observableArrayList();
 

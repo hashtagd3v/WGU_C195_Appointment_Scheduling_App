@@ -1,5 +1,6 @@
 package Model;
 
+/**This is the first level division class.*/
 public class FirstLevelDivision {
 
     private int firstLevelDivId;
@@ -17,20 +18,20 @@ public class FirstLevelDivision {
         this.firstLevelDivId = firstLevelDivId;
         this.firstLevelDivName = firstLevelDivName;
     }
-
+    /** @return Returns the first level division ID.*/
     public int getFirstLevelDivId() {
         return firstLevelDivId;
     }
 
+    /** @return Returns the first level division name.*/
     public String getFirstLevelDivName() {
         return firstLevelDivName;
     }
 
+    /** @return Returns first level division Name in String format.*/
     @Override
     public String toString() {
         return (firstLevelDivName);
     }
-
-    //FIXME: How do I show just the firstLevelDiveName?; fix connection successful appearing multiple times!
 
 }

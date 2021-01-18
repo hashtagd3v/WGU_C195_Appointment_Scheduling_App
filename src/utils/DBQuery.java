@@ -1,18 +1,19 @@
 package utils;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
+/** This class creates a Prepared Statement object.*/
 public class DBQuery {
 
-    private static Statement statement;
+    private static PreparedStatement statement;
 
+    /** This method creates a statement object.*/
     public static void setPreparedStatement(Connection conn, String sqlStatement) throws SQLException {
         statement = conn.prepareStatement(sqlStatement);
     }
 
-    public static Statement getPreparedStatement() {
+    /** @return Returns a statement object.*/
+    public static PreparedStatement getPreparedStatement() {
         return statement;
     }
 
