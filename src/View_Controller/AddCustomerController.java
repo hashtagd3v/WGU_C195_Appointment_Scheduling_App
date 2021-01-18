@@ -1,7 +1,7 @@
 package View_Controller;
 
+import Model.Country;
 import Model.FirstLevelDivision;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static DBAccess.DBCountry.getAllCountry;
 import static DBAccess.DBFirstLevelDiv.getAllFirstLevelDiv;
 
 /** Add Customer screen enables user to add new customer to the database. Screen is made up of a form that
@@ -27,7 +28,7 @@ public class AddCustomerController implements Initializable {
     public TextField addCustomerNameText;
     public TextField addCustomerAddressText;
     public ComboBox<FirstLevelDivision> addCustomerFirstLdCombo;
-    public ComboBox addCustomerCountryCombo;
+    public ComboBox<Country> addCustomerCountryCombo;
     public TextField addCustomerPostalText;
     public TextField addCustomerPhoneText;
 
@@ -37,8 +38,8 @@ public class AddCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ObservableList<FirstLevelDivision> allFirstLevelDiv = getAllFirstLevelDiv();
-        addCustomerFirstLdCombo.setItems(allFirstLevelDiv);
+        addCustomerFirstLdCombo.setItems(getAllFirstLevelDiv());
+        addCustomerCountryCombo.setItems(getAllCountry());
 
     }
 

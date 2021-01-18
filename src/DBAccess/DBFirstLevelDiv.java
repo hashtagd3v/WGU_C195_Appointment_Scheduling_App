@@ -22,10 +22,9 @@ public class DBFirstLevelDiv {
 
             while(resultSet.next()){
 
-                int firstLevelDivId = resultSet.getInt("Division_ID");
                 String firstLevelDivName = resultSet.getString("Division");
 
-                FirstLevelDivision firstLevelDivision = new FirstLevelDivision(firstLevelDivId, firstLevelDivName);
+                FirstLevelDivision firstLevelDivision = new FirstLevelDivision(firstLevelDivName);
 
                 divList.add(firstLevelDivision);
 
