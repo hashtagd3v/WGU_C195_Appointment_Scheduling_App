@@ -8,6 +8,7 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /** This is the Customer DB access class.
  * This class obtains a list of all customers from customers database table.*/
@@ -52,6 +53,27 @@ public class DBCustomer {
         }
 
         return customerList;
+
+    }
+
+    public static void createCustomer(String name, String address, String postalCode, String phone, int divId) {
+
+        try {
+            String sql = "INSERT INTO customers VALUES(NULL, ?, ?, ?, ?, NULL, NULL, NULL, NULL, ?)";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+
+            preparedStatement.setString(1,name);
+            preparedStatement.setString(2, address);
+            preparedStatement.setString(3, postalCode);
+            preparedStatement.setString(4, phone);
+            preparedStatement.setInt(5, divId);
+
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

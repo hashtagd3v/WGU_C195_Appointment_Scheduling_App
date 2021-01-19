@@ -6,14 +6,6 @@ public class Country {
     private int countryId;
     private String country;
 
-    public Country (int countryId) {
-        this.countryId = countryId;
-    }
-
-    public Country (String country) {
-        this.country = country;
-    }
-
     public Country(int countryId, String country) {
         this.countryId = countryId;
         this.country = country;
@@ -32,7 +24,7 @@ public class Country {
     /** @return Returns country name in String format.*/
     @Override
     public String toString() {
-        return (country);
+        return "[" + countryId + "] " + country;
     }
 
 }

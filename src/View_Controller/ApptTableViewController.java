@@ -9,14 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static DBAccess.DBCustomer.getAllCustomers;
 
 /** This class enables user to select buttons for going back to previous screen, adding/updating/deleting appointments.
  * Appointment Table View screen displays list of all scheduled appointments in table view.*/

@@ -27,8 +27,9 @@ public class DBCountry {
 
             while (resultSet.next()) {
 
+                int countryId = resultSet.getInt("Country_ID");
                 String country = resultSet.getString("Country");
-                Country c = new Country(country);
+                Country c = new Country(countryId, country);
                 countryList.add(c);
 
             }

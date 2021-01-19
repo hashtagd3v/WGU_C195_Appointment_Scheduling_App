@@ -1,5 +1,6 @@
 package View_Controller;
 
+import DBAccess.DBCustomer;
 import Model.Country;
 import Model.FirstLevelDivision;
 import javafx.event.ActionEvent;
@@ -11,9 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.DBConnection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCountry.getAllCountry;
@@ -66,6 +70,32 @@ public class AddCustomerController implements Initializable {
      * the list of customers.
      * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddCustomerAddBtn(ActionEvent actionEvent) throws IOException {
+
+        int customerId;
+        String customerName = addCustomerNameText.getText();
+        String customerAddress = addCustomerAddressText.getText();
+        String postalCode = addCustomerPostalText.getText();
+        String customerPhoneNo = addCustomerPhoneText.getText();
+
+        //Grabs first level division selected from combo box:
+        FirstLevelDivision division = addCustomerFirstLdCombo.getSelectionModel().getSelectedItem();
+        //Grabs ONLY the division ID:
+        int divId = division.getFirstLevelDivId();
+
+        //Grabs country selected from combo box:
+        Country country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
+        //Grabs ONLY the country ID:
+        int countryId = country.getCountryId();
+
+        //Combo box selection validation:
+        if (division == null || country == null) {
+            return;
+        }
+
+        //Create new customer:
+        DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
+
+        //TODO: Implement Create_Date, Created_By, Last_Update_By in customers table; currently set to NULL.
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));

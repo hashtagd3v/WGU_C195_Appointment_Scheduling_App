@@ -6,14 +6,6 @@ public class FirstLevelDivision {
     private int firstLevelDivId;
     private String firstLevelDivName;
 
-    public FirstLevelDivision(int firstLevelDivId) {
-        this.firstLevelDivId = firstLevelDivId;
-    }
-
-    public FirstLevelDivision(String firstLevelDivName) {
-        this.firstLevelDivName = firstLevelDivName;
-    }
-
     public FirstLevelDivision(int firstLevelDivId, String firstLevelDivName) {
         this.firstLevelDivId = firstLevelDivId;
         this.firstLevelDivName = firstLevelDivName;
@@ -31,7 +23,7 @@ public class FirstLevelDivision {
     /** @return Returns first level division Name in String format.*/
     @Override
     public String toString() {
-        return (firstLevelDivName);
+        return "[" + firstLevelDivId + "] " + firstLevelDivName;
     }
 
 }
