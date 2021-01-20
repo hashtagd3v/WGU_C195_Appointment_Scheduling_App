@@ -95,7 +95,7 @@ public class AddCustomerController implements Initializable {
         //Create new customer:
         DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
 
-        //TODO: Implement Create_Date, Created_By, Last_Update_By in customers table; currently set to NULL.
+        //TODO: Implement Create_Date, Created_By, Last_Update_By in customers table? currently set to NULL.
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));

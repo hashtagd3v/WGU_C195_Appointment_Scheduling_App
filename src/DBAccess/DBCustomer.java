@@ -56,6 +56,12 @@ public class DBCustomer {
 
     }
 
+    /** This method creates a new customer and adds it to the customers database.
+     * @param name The customer name
+     * @param address The customer address
+     * @param postalCode The customer's postal code
+     * @param phone The customer's phone number
+     * @param divId The customer's first level division ID.*/
     public static void createCustomer(String name, String address, String postalCode, String phone, int divId) {
 
         try {
@@ -74,6 +80,16 @@ public class DBCustomer {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    /** This method updates customer information for selected customer instance from customer table view. */
+    public static void updateCustomer() {
+
+    }
+
+    /** This method deletes customer instance selected from customer table view.*/
+    public static void deleteCustomer(){
 
     }
 
