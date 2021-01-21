@@ -70,7 +70,7 @@ public class AddCustomerController implements Initializable {
      * the list of customers.
      * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddCustomerAddBtn(ActionEvent actionEvent) throws IOException {
-        
+
         String customerName = addCustomerNameText.getText();
         String customerAddress = addCustomerAddressText.getText();
         String postalCode = addCustomerPostalText.getText();

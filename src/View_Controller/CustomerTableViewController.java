@@ -82,8 +82,17 @@ public class CustomerTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionCustomerUpdateBtn(ActionEvent actionEvent) throws IOException {
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/UpdateCustomerScreen.fxml"));
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/View_Controller/UpdateCustomerScreen.fxml"));
+        loader.load();
+
+        UpdateCustomerController MODController = loader.getController();
+        MODController.getCustomer(selectedCustomer);
+
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
         stage.setScene(new Scene(scene));
         stage.show();
 

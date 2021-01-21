@@ -82,8 +82,31 @@ public class DBCustomer {
 
     }
 
-    /** This method updates customer information for selected customer instance from customer table view. */
-    public static void updateCustomer() {
+    /** This method updates customer information for selected customer instance from customer table view.
+     * @param customerId The customer id
+     * @param name The customer name
+     * @param address The customer address
+     * @param phone The customer phone number
+     * @param postalCode The customer's postal code
+     * @param divId The customer's division ID.*/
+    public static void updateCustomer(int customerId, String name, String address, String postalCode, String phone, int divId) {
+
+        try {
+
+            String sql = "UPDATE customers set Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Division_ID = ? WHERE Customer_ID = ?";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, address);
+            preparedStatement.setString(3, postalCode);
+            preparedStatement.setString(4, phone);
+            preparedStatement.setInt(5, divId);
+            preparedStatement.setInt(6, customerId);
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
