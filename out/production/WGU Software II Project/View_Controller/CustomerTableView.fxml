@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.CustomerTableViewController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="950.0">
+         <children>
+            <Label text="Customer List">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Region prefHeight="200.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets left="100.0" right="100.0" />
+               </HBox.margin>
+            </Region>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox layoutY="93.0" prefHeight="300.0" prefWidth="950.0">
+         <children>
+            <TableView fx:id="customerTableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="900.0">
+              <columns>
+                <TableColumn fx:id="customerIdCol" prefWidth="92.0" text="Customer ID" />
+                <TableColumn fx:id="customerNameCol" prefWidth="149.0" text="Name" />
+                  <TableColumn fx:id="customerAddressCol" prefWidth="223.0" text="Address" />
+                  <TableColumn fx:id="customerPostalCodeCol" prefWidth="102.0" text="Postal Code" />
+                  <TableColumn fx:id="customerPhoneNoCol" prefWidth="102.0" text="Phone No." />
+                  <TableColumn fx:id="customerFirstLevelDivCol" prefWidth="103.0" text="1st Level Div" />
+                  <TableColumn fx:id="customerCountryCol" prefWidth="128.0" text="Country" />
+              </columns>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="950.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onActionCustomerBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionCustomerAddBtn" prefHeight="30.0" prefWidth="90.0" text="Add" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionCustomerUpdateBtn" prefHeight="30.0" prefWidth="90.0" text="Update" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionCustomerDeleteBtn" prefHeight="30.0" prefWidth="90.0" text="Delete" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
