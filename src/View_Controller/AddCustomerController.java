@@ -70,8 +70,7 @@ public class AddCustomerController implements Initializable {
      * the list of customers.
      * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddCustomerAddBtn(ActionEvent actionEvent) throws IOException {
-
-        int customerId;
+        
         String customerName = addCustomerNameText.getText();
         String customerAddress = addCustomerAddressText.getText();
         String postalCode = addCustomerPostalText.getText();
@@ -84,8 +83,6 @@ public class AddCustomerController implements Initializable {
 
         //Grabs country selected from combo box:
         Country country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
-        //Grabs ONLY the country ID:
-        int countryId = country.getCountryId();
 
         //Combo box selection validation:
         if (division == null || country == null) {
@@ -95,7 +92,7 @@ public class AddCustomerController implements Initializable {
         //Create new customer:
         DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
 
-        //TODO: Implement Create_Date, Created_By, Last_Update_By in customers table? currently set to NULL.
+        //TODO: Filter First Level Division combo box list based on country selection.
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));

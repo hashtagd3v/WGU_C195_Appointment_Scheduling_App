@@ -8,7 +8,6 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /** This is the Customer DB access class.
  * This class obtains a list of all customers from customers database table.*/
