@@ -1,5 +1,6 @@
 package View_Controller;
 
+import DBAccess.DBCustomer;
 import Model.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -103,6 +104,14 @@ public class CustomerTableViewController implements Initializable {
      * selected customer from table view list.
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionCustomerDeleteBtn(ActionEvent actionEvent) {
+
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+        int customerId = selectedCustomer.getCustomerId();
+
+        DBCustomer.deleteCustomer(customerId);
+
+        //Update customer table view info after deleting selected customer:
+        customerTableView.setItems(getAllCustomers());
 
     }
 

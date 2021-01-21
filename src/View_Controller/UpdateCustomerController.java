@@ -85,6 +85,27 @@ public class UpdateCustomerController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionUpdateCustomerDeleteBtn(ActionEvent actionEvent) throws IOException {
 
+        String customerName = updateNameText.getText();
+        String customerAddress = updateAddressText.getText();
+        String postalCode = updatePostalText.getText();
+        String customerPhoneNo = updatePhoneText.getText();
+
+        //Grabs first level division selected from combo box:
+        FirstLevelDivision division = (FirstLevelDivision) updateFirstLdCombo.getSelectionModel().getSelectedItem();
+        //Grabs ONLY the division ID:
+        int divId = division.getFirstLevelDivId();
+
+        //Grabs country selected from combo box:
+        Country country = (Country) updateCountryCombo.getSelectionModel().getSelectedItem();
+
+        //Combo box selection validation:
+        if (division == null || country == null) {
+            return;
+        }
+
+        //Delete customer selected from table view:
+        DBCustomer.deleteCustomer(customerId);
+
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
         stage.setScene(new Scene(scene));

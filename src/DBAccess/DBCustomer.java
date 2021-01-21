@@ -65,8 +65,8 @@ public class DBCustomer {
 
         try {
             String sql = "INSERT INTO customers VALUES(NULL, ?, ?, ?, ?, NULL, NULL, NULL, NULL, ?)";
-            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
 
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             preparedStatement.setString(1,name);
             preparedStatement.setString(2, address);
             preparedStatement.setString(3, postalCode);
@@ -94,6 +94,7 @@ public class DBCustomer {
         try {
 
             String sql = "UPDATE customers set Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Division_ID = ? WHERE Customer_ID = ?";
+
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, address);
@@ -110,8 +111,22 @@ public class DBCustomer {
 
     }
 
-    /** This method deletes customer instance selected from customer table view.*/
-    public static void deleteCustomer(){
+    /** This method deletes customer instance selected from customer table view.
+     * @param customerId The selected customer ID.*/
+    public static void deleteCustomer(int customerId){
+
+        try{
+
+            String sql = "DELETE FROM customers WHERE Customer_ID = ?";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, customerId);
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
