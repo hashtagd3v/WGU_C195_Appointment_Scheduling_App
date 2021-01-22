@@ -1,7 +1,6 @@
 package View_Controller;
 
 import DBAccess.DBCustomer;
-import DBAccess.DBFirstLevelDiv;
 import Model.Country;
 import Model.FirstLevelDivision;
 import javafx.event.ActionEvent;
@@ -36,8 +35,6 @@ public class AddCustomerController implements Initializable {
 
     Stage stage;
     Parent scene;
-    private Country country = null;
-    private int countryID;
 
     /** This method initializes add customer screen with list of first level division and country
      * from database to combo boxes.
@@ -82,7 +79,7 @@ public class AddCustomerController implements Initializable {
         int divId = division.getFirstLevelDivId();
 
         //Combo box selection validation:
-        if (division == null) {
+        if (division.getFirstLevelDivName() == null) {
             return;
         }
 
@@ -103,9 +100,11 @@ public class AddCustomerController implements Initializable {
     public void onActionCountryCombo(ActionEvent actionEvent) {
 
         //Grabs country selected from combo box:
-        country = (Country) addCustomerCountryCombo.getSelectionModel().getSelectedItem();
+        Country country;
+        country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
 
         //Grabs selected country ID:
+        int countryID;
         countryID = country.getCountryId();
 
         //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.

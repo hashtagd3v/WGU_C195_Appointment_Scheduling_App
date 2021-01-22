@@ -30,16 +30,14 @@ public class UpdateCustomerController implements Initializable {
     public TextField updateIDText;
     public TextField updateNameText;
     public TextField updateAddressText;
-    public ComboBox updateFirstLdCombo;
-    public ComboBox updateCountryCombo;
+    public ComboBox<FirstLevelDivision> updateFirstLdCombo;
+    public ComboBox<Country> updateCountryCombo;
     public TextField updatePhoneText;
     public TextField updatePostalText;
 
     Stage stage;
     Parent scene;
-    private Country country = null;
     private int customerId;
-    private int countryId;
 
     /** This method sets the combo boxes with a list of all first level division and country selections.
      * @param url The location.
@@ -113,12 +111,12 @@ public class UpdateCustomerController implements Initializable {
         String customerPhoneNo = updatePhoneText.getText();
 
         //Grabs first level division selected from combo box:
-        FirstLevelDivision division = (FirstLevelDivision) updateFirstLdCombo.getSelectionModel().getSelectedItem();
+        FirstLevelDivision division = updateFirstLdCombo.getSelectionModel().getSelectedItem();
         //Grabs ONLY the division ID:
         int divId = division.getFirstLevelDivId();
 
         //Combo box selection validation:
-        if (division == null) {
+        if (division.getFirstLevelDivName() == null) {
             return;
         }
 
@@ -137,10 +135,10 @@ public class UpdateCustomerController implements Initializable {
     public void onActionUpdateCountryCombo(ActionEvent actionEvent) {
 
         //Grabs country selected from combo box:
-        country = (Country) updateCountryCombo.getSelectionModel().getSelectedItem();
+        Country country = updateCountryCombo.getSelectionModel().getSelectedItem();
 
         //Grabs selected country ID:
-        countryId = country.getCountryId();
+        int countryId = country.getCountryId();
 
         //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.
         // This filters the first level division selection depending on country selected:
