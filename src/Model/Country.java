@@ -1,5 +1,9 @@
 package Model;
 
+import javafx.collections.ObservableList;
+
+import static DBAccess.DBCountry.getAllCountry;
+
 /** This is the country class.*/
 public class Country {
 
@@ -9,6 +13,30 @@ public class Country {
     public Country(int countryId, String country) {
         this.countryId = countryId;
         this.country = country;
+    }
+
+    /** This method searches the first level division combo box for matching country ID of the customer selected.
+     * @param countryId The customer country ID.
+     * @return Returns the country with matching ID.*/
+    public static Country getCountryIdMatch(int countryId) {
+        ObservableList<Country> divisions =  getAllCountry();
+
+        Country country = null;
+
+        for (int i = 0; i < divisions.size(); i++) {
+            Country selectCountry = divisions.get(i);
+
+            if (selectCountry.getCountryId() != countryId) {
+                continue;
+            } else {
+                country = selectCountry;
+                break;
+            }
+
+        }
+
+        return country;
+
     }
 
     /** @return Returns country Id.*/

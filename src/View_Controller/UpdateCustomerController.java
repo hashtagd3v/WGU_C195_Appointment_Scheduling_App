@@ -38,6 +38,9 @@ public class UpdateCustomerController implements Initializable {
     Parent scene;
     private int customerId;
 
+    /** This method sets the combo boxes with a list of all first level division and country selections.
+     * @param url The location.
+     * @param resourceBundle The resources.*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -51,18 +54,16 @@ public class UpdateCustomerController implements Initializable {
     public void getCustomer(Customer customer){
 
         customerId = customer.getCustomerId();
-        int divId = customer.getDivisionId();
-        int countryId = customer.getCountryId();
+        int customerDivId = customer.getDivisionId();
+        int customerCountryId = customer.getCountryId();
 
         updateNameText.setText(customer.getCustomerName());
         updateAddressText.setText(customer.getCustomerAddress());
         updatePhoneText.setText(customer.getCustomerPhoneNo());
         updatePostalText.setText(customer.getPostalCode());
-
-        //FIXME: Set combo boxes to previously selected items:
-
-        updateFirstLdCombo.getSelectionModel().select(divId);
-        updateCountryCombo.getSelectionModel().select(countryId);
+        //Sets combo boxes default selection to customer's saved first level division and country information:
+        updateFirstLdCombo.setValue(FirstLevelDivision.getDivisionIdMatch(customerDivId));
+        updateCountryCombo.setValue(Country.getCountryIdMatch(customerCountryId));
 
     }
 
