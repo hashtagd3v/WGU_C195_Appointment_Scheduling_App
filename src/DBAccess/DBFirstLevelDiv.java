@@ -42,6 +42,7 @@ public class DBFirstLevelDiv {
         return divList;
     }
 
+    /** @return Returns observable list of all first level division within US only.*/
     public static ObservableList<FirstLevelDivision> getUSFirstLevelDivisions(){
         ObservableList<FirstLevelDivision> firstLevelDivisionsUSOnly = FXCollections.observableArrayList();
 
@@ -68,6 +69,7 @@ public class DBFirstLevelDiv {
 
     }
 
+    /** @return Returns observable list of all first level division within UK only.*/
     public static ObservableList<FirstLevelDivision> getUnitedKingdomFirstLevelDivisions(){
         ObservableList<FirstLevelDivision> firstLevelDivisionsUKOnly = FXCollections.observableArrayList();
 
@@ -94,6 +96,7 @@ public class DBFirstLevelDiv {
 
     }
 
+    /** @return Returns observable list of all first level division within Canada only.*/
     public static ObservableList<FirstLevelDivision> getCanadaFirstLevelDivisions(){
         ObservableList<FirstLevelDivision> firstLevelDivisionsCanadaOnly = FXCollections.observableArrayList();
 
