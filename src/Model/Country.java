@@ -16,9 +16,9 @@ public class Country {
     }
 
     /** This method searches the first level division combo box for matching country ID of the customer selected.
-     * @param countryId The customer country ID.
+     * @param id The customer country ID.
      * @return Returns the country with matching ID.*/
-    public static Country getCountryIdMatch(int countryId) {
+    public static Country getCountryIdMatch(int id) {
         ObservableList<Country> divisions =  getAllCountry();
 
         Country country = null;
@@ -26,7 +26,7 @@ public class Country {
         for (int i = 0; i < divisions.size(); i++) {
             Country selectCountry = divisions.get(i);
 
-            if (selectCountry.getCountryId() != countryId) {
+            if (selectCountry.getCountryId() != id) {
                 continue;
             } else {
                 country = selectCountry;

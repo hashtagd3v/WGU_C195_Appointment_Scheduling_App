@@ -19,7 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCountry.getAllCountry;
-import static DBAccess.DBFirstLevelDiv.getAllFirstLevelDiv;
+import static DBAccess.DBFirstLevelDiv.*;
+import static DBAccess.DBFirstLevelDiv.getCanadaFirstLevelDivisions;
 
 /** This class is the controller for UpdateCustomerScreen.fxml screen.
  * Update customer screen enables users to update customer information
@@ -36,7 +37,9 @@ public class UpdateCustomerController implements Initializable {
 
     Stage stage;
     Parent scene;
+    private Country country = null;
     private int customerId;
+    private int countryId;
 
     /** This method sets the combo boxes with a list of all first level division and country selections.
      * @param url The location.
@@ -61,6 +64,7 @@ public class UpdateCustomerController implements Initializable {
         updateAddressText.setText(customer.getCustomerAddress());
         updatePhoneText.setText(customer.getCustomerPhoneNo());
         updatePostalText.setText(customer.getPostalCode());
+
         //Sets combo boxes default selection to customer's saved first level division and country information:
         updateFirstLdCombo.setValue(FirstLevelDivision.getDivisionIdMatch(customerDivId));
         updateCountryCombo.setValue(Country.getCountryIdMatch(customerCountryId));
@@ -113,11 +117,8 @@ public class UpdateCustomerController implements Initializable {
         //Grabs ONLY the division ID:
         int divId = division.getFirstLevelDivId();
 
-        //Grabs country selected from combo box:
-        Country country = (Country) updateCountryCombo.getSelectionModel().getSelectedItem();
-
         //Combo box selection validation:
-        if (division == null || country == null) {
+        if (division == null) {
             return;
         }
 
@@ -128,6 +129,28 @@ public class UpdateCustomerController implements Initializable {
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
+
+    }
+
+    /** This method filters the first level division selection depending on selected country.
+     * @param actionEvent the event or mouse click on Country combo box.*/
+    public void onActionUpdateCountryCombo(ActionEvent actionEvent) {
+
+        //Grabs country selected from combo box:
+        country = (Country) updateCountryCombo.getSelectionModel().getSelectedItem();
+
+        //Grabs selected country ID:
+        countryId = country.getCountryId();
+
+        //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.
+        // This filters the first level division selection depending on country selected:
+        if (countryId== 1) {
+            updateFirstLdCombo.setItems(getUSFirstLevelDivisions());
+        } else if (countryId == 2) {
+            updateFirstLdCombo.setItems(getUnitedKingdomFirstLevelDivisions());
+        } else if (countryId == 3){
+            updateFirstLdCombo.setItems(getCanadaFirstLevelDivisions());
+        }
 
     }
 

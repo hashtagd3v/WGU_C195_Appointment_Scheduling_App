@@ -1,6 +1,7 @@
 package View_Controller;
 
 import DBAccess.DBCustomer;
+import DBAccess.DBFirstLevelDiv;
 import Model.Country;
 import Model.FirstLevelDivision;
 import javafx.event.ActionEvent;
@@ -12,16 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import utils.DBConnection;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCountry.getAllCountry;
-import static DBAccess.DBFirstLevelDiv.getAllFirstLevelDiv;
+import static DBAccess.DBFirstLevelDiv.*;
 
 /** This class Customer screen enables user to add new customer to the database. Screen is made up of a form that
  * has text fields for Customer ID, Name, Address, Postal Code, and Phone Number. It also has two combo boxes.
@@ -38,6 +36,8 @@ public class AddCustomerController implements Initializable {
 
     Stage stage;
     Parent scene;
+    private Country country = null;
+    private int countryID;
 
     /** This method initializes add customer screen with list of first level division and country
      * from database to combo boxes.
@@ -81,11 +81,8 @@ public class AddCustomerController implements Initializable {
         //Grabs ONLY the division ID:
         int divId = division.getFirstLevelDivId();
 
-        //Grabs country selected from combo box:
-        Country country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
-
         //Combo box selection validation:
-        if (division == null || country == null) {
+        if (division == null) {
             return;
         }
 
@@ -98,6 +95,28 @@ public class AddCustomerController implements Initializable {
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
+
+    }
+
+    /** This method filters the first level division selection depending on selected country.
+     * @param actionEvent the event or mouse click on Country combo box.*/
+    public void onActionCountryCombo(ActionEvent actionEvent) {
+
+        //Grabs country selected from combo box:
+        country = (Country) addCustomerCountryCombo.getSelectionModel().getSelectedItem();
+
+        //Grabs selected country ID:
+        countryID = country.getCountryId();
+
+        //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.
+        // This filters the first level division selection depending on country selected:
+        if (countryID == 1) {
+            addCustomerFirstLdCombo.setItems(getUSFirstLevelDivisions());
+        } else if (countryID == 2) {
+            addCustomerFirstLdCombo.setItems(getUnitedKingdomFirstLevelDivisions());
+        } else if (countryID == 3){
+            addCustomerFirstLdCombo.setItems(getCanadaFirstLevelDivisions());
+        }
 
     }
 
