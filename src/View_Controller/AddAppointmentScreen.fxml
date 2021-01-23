@@ -66,11 +66,11 @@
                   <Insets left="15.0" top="15.0" />
                </HBox.margin>
             </Label>
-            <ComboBox fx:id="addApptTypeCombo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
+            <TextField fx:id="addApptTypeText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
-            </ComboBox>
+            </TextField>
          </children>
       </HBox>
       <HBox layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="10.0">

@@ -56,4 +56,10 @@ public class Customer {
         return countryId;
     }
 
+    /** @return Returns customer id and customer name in String format.*/
+    @Override
+    public String toString() {
+        return "[" + customerId + "] " + customerName;
+    }
+
 }

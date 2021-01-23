@@ -27,8 +27,8 @@ public class UpdateAppointmentController {
     public Spinner updateApptEndMin;
     public ComboBox updateApptCustomerIDCombo;
     public ComboBox updateApptUserIDCombo;
-    public ComboBox updateApptTypeCombo;
     public DatePicker updateApptDatePicker;
+    public TextField updateApptTypeText;
 
     Stage stage;
     Parent scene;

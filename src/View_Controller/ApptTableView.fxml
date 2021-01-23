@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -35,11 +36,11 @@
             <TableView fx:id="apptTableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="1000.0">
               <columns>
                 <TableColumn fx:id="apptIdCol" prefWidth="77.0" text="Appt ID" />
-                <TableColumn fx:id="apptTitleCol" prefWidth="152.0" text="Title" />
-                  <TableColumn fx:id="apptDescriptionCol" prefWidth="210.0" text="Description" />
-                  <TableColumn fx:id="apptLocationCol" prefWidth="79.0" text="Location" />
-                  <TableColumn fx:id="apptContactCol" prefWidth="75.0" text="Contact" />
-                  <TableColumn fx:id="apptTypeCol" prefWidth="74.0" text="Type" />
+                <TableColumn fx:id="apptTitleCol" prefWidth="119.0" text="Title" />
+                  <TableColumn fx:id="apptDescriptionCol" prefWidth="142.0" text="Description" />
+                  <TableColumn fx:id="apptLocationCol" prefWidth="111.0" text="Location" />
+                  <TableColumn fx:id="apptContactCol" prefWidth="133.0" text="Contact" />
+                  <TableColumn fx:id="apptTypeCol" prefWidth="85.0" text="Type" />
                   <TableColumn fx:id="apptStartDateTimeCol" prefWidth="120.0" text="Start Date &amp; Time" />
                   <TableColumn fx:id="apptEndDateTimeCol" prefWidth="120.0" text="End Date &amp; Time" />
                   <TableColumn fx:id="apptCustomerIDCol" prefWidth="94.0" text="Customer ID" />
@@ -57,9 +58,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <RadioButton mnemonicParsing="false" onAction="#onActionFilterByMonthBtn" text="Month" />
-            <RadioButton mnemonicParsing="false" onAction="#onActionFilterByWeekBtn" text="Week" />
-            <RadioButton mnemonicParsing="false" onAction="#onActionFilterAllBtn" text="All" />
+            <RadioButton fx:id="filterMonthRadioBtn" mnemonicParsing="false" onAction="#onActionFilterByMonthBtn" text="Month">
+               <toggleGroup>
+                  <ToggleGroup fx:id="filterApptToggle" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="filterWeekRadioBtn" mnemonicParsing="false" onAction="#onActionFilterByWeekBtn" text="Week" toggleGroup="$filterApptToggle" />
+            <RadioButton fx:id="filterAllRadioBtn" mnemonicParsing="false" onAction="#onActionFilterAllBtn" selected="true" text="All" toggleGroup="$filterApptToggle" />
             <Region prefHeight="80.0" prefWidth="363.0" />
             <Button mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptAddBtn" prefHeight="30.0" prefWidth="90.0" text="Add">

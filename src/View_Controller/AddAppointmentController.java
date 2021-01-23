@@ -2,19 +2,26 @@ package View_Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import static DBAccess.DBContact.getAllContacts;
+import static DBAccess.DBCustomer.getAllCustomers;
+import static DBAccess.DBUser.getAllUsers;
 
 /** This class enables user to add new appointment. Users fill out a form with text fields for
  * title of the appointment, description and location. New Appointment ID is auto generated in the Appt ID
  * text field and is disabled. There are also combo boxes for Customer ID, User ID and Contact to be assigned
  * to the appointment. This enables user to choose from pre-existing list of choices. There is also a date picker
  * for user to select date of appointment, and spinner boxes for user to select start and end time for appointment.*/
-public class AddAppointmentController {
+public class AddAppointmentController implements Initializable {
 
     public TextField addApptIDText;
     public TextField addApptTitleText;
@@ -27,11 +34,23 @@ public class AddAppointmentController {
     public Spinner addApptEndMin;
     public ComboBox addApptCustomerIDCombo;
     public ComboBox addApptUserIDCombo;
-    public ComboBox addApptTypeCombo;
     public DatePicker addApptDatePicker;
+    public TextField addApptTypeText;
 
     Stage stage;
     Parent scene;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        
+        //Displays all customers in Combo Box:
+        addApptCustomerIDCombo.setItems(getAllCustomers());
+        //Displays all users in Combo Box:
+        addApptUserIDCombo.setItems(getAllUsers());
+//        //Displays all contacts in Combo Box:
+        addApptContactCombo.setItems(getAllContacts());
+
+    }
 
     /** This method allows user to cancel adding an appointment.
      * Cancel button switches user back to previous screen: Appointment Table View list.
