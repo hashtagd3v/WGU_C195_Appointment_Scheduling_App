@@ -17,7 +17,7 @@ import static DBAccess.DBCustomer.getAllCustomers;
 import static DBAccess.DBUser.getAllUsers;
 
 /** This class enables user to add new appointment. Users fill out a form with text fields for
- * title of the appointment, description and location. New Appointment ID is auto generated in the Appt ID
+ * title of the appointment, description, type and location. New Appointment ID is auto generated in the Appt ID
  * text field and is disabled. There are also combo boxes for Customer ID, User ID and Contact to be assigned
  * to the appointment. This enables user to choose from pre-existing list of choices. There is also a date picker
  * for user to select date of appointment, and spinner boxes for user to select start and end time for appointment.*/
@@ -40,14 +40,17 @@ public class AddAppointmentController implements Initializable {
     Stage stage;
     Parent scene;
 
+    /** This method initializes add appointment screen combo boxes with a list of selection.
+     * @param url the location
+     * @param resourceBundle the resources.*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+
         //Displays all customers in Combo Box:
         addApptCustomerIDCombo.setItems(getAllCustomers());
         //Displays all users in Combo Box:
         addApptUserIDCombo.setItems(getAllUsers());
-//        //Displays all contacts in Combo Box:
+        //Displays all contacts in Combo Box:
         addApptContactCombo.setItems(getAllContacts());
 
     }

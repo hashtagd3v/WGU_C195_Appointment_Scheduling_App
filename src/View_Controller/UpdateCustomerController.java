@@ -1,6 +1,7 @@
 package View_Controller;
 
 import DBAccess.DBCustomer;
+import DBAccess.DBFirstLevelDiv;
 import Model.Country;
 import Model.Customer;
 import Model.FirstLevelDivision;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,8 +21,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCountry.getAllCountry;
-import static DBAccess.DBFirstLevelDiv.*;
-import static DBAccess.DBFirstLevelDiv.getCanadaFirstLevelDivisions;
+import static DBAccess.DBFirstLevelDiv.getAllFirstLevelDiv;
+import static DBAccess.DBFirstLevelDiv.getFirstLevelDivisionsByCountry;
 
 /** This class is the controller for UpdateCustomerScreen.fxml screen.
  * Update customer screen enables users to update customer information
@@ -64,8 +66,11 @@ public class UpdateCustomerController implements Initializable {
         updatePostalText.setText(customer.getPostalCode());
 
         //Sets combo boxes default selection to customer's saved first level division and country information:
-        updateFirstLdCombo.setValue(FirstLevelDivision.getDivisionIdMatch(customerDivId));
         updateCountryCombo.setValue(Country.getCountryIdMatch(customerCountryId));
+        //Triggers country selection as if event had occurred already:
+        onActionUpdateCountryCombo(null);
+        updateFirstLdCombo.setValue(FirstLevelDivision.getDivisionIdMatch(customerDivId));
+
 
     }
 
@@ -142,13 +147,7 @@ public class UpdateCustomerController implements Initializable {
 
         //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.
         // This filters the first level division selection depending on country selected:
-        if (countryId== 1) {
-            updateFirstLdCombo.setItems(getUSFirstLevelDivisions());
-        } else if (countryId == 2) {
-            updateFirstLdCombo.setItems(getUnitedKingdomFirstLevelDivisions());
-        } else if (countryId == 3){
-            updateFirstLdCombo.setItems(getCanadaFirstLevelDivisions());
-        }
+        updateFirstLdCombo.setItems(getFirstLevelDivisionsByCountry(countryId));
 
     }
 

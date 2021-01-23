@@ -20,7 +20,8 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, Type, Start, End, customers.Customer_ID FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID";
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, Type, Start, End, customers.Customer_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -32,8 +33,8 @@ public class DBAppointment {
                 String location = resultSet.getString("Location");
                 String contact = resultSet.getString("Contact_Name");
                 String type = resultSet.getString("Type");
-                LocalDateTime start = resultSet.getObject("Start", LocalDateTime.class);
-                LocalDateTime end  = resultSet.getObject("End", LocalDateTime.class);
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
+                LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
                 int customerId = resultSet.getInt("Customer_ID");
 
                 Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId);

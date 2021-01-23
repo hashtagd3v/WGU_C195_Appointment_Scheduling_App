@@ -24,7 +24,7 @@ public class DBConnection {
 
     /** This method creates a connection to the database.
      * @return Returns database connection.*/
-    public static Connection getConnection() {
+    public static Connection startConnection() {
         try {
             Class.forName(MYSQLJDBCDriver);
             connection = DriverManager.getConnection(jdbcURL, userName, password);
@@ -33,6 +33,10 @@ public class DBConnection {
             e.printStackTrace();
         }
 
+        return connection;
+    }
+
+    public static Connection getConnection() {
         return connection;
     }
 

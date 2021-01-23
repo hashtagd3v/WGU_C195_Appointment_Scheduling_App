@@ -98,8 +98,7 @@ public class AddCustomerController implements Initializable {
     public void onActionCountryCombo(ActionEvent actionEvent) {
 
         //Grabs country selected from combo box:
-        Country country;
-        country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
+        Country country = addCustomerCountryCombo.getSelectionModel().getSelectedItem();
 
         //Grabs selected country ID:
         int countryID;
@@ -107,13 +106,7 @@ public class AddCustomerController implements Initializable {
 
         //Sets the first level divisions with matching country ID for selection in FirstLdCombo Box.
         // This filters the first level division selection depending on country selected:
-        if (countryID == 1) {
-            addCustomerFirstLdCombo.setItems(getUSFirstLevelDivisions());
-        } else if (countryID == 2) {
-            addCustomerFirstLdCombo.setItems(getUnitedKingdomFirstLevelDivisions());
-        } else if (countryID == 3){
-            addCustomerFirstLdCombo.setItems(getCanadaFirstLevelDivisions());
-        }
+        addCustomerFirstLdCombo.setItems(getFirstLevelDivisionsByCountry(countryID));
 
     }
 
