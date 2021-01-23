@@ -86,8 +86,6 @@ public class AddCustomerController implements Initializable {
         //Create new customer:
         DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
 
-        //TODO: Filter First Level Division combo box list based on country selection.
-
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
         stage.setScene(new Scene(scene));
