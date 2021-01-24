@@ -49,8 +49,39 @@ public class DBAppointment {
         return apptList;
     }
 
-//    public static ObservableList<Appointment> getAppointmentsByCurrentMonth() {
-//
-//    }
+    public static ObservableList<Appointment> getAppointmentsByCurrentMonth() {
+        ObservableList<Appointment> apptMonthList = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, Type, Start, End, customers.Customer_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID " +
+                    "AND month(Start) = month(now())";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int appointmentId = resultSet.getInt("Appointment_ID");
+                String title = resultSet.getString("Title");
+                String desc = resultSet.getString("Description");
+                String location = resultSet.getString("Location");
+                String contact = resultSet.getString("Contact_Name");
+                String type = resultSet.getString("Type");
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
+                LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+                int customerId = resultSet.getInt("Customer_ID");
+
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId);
+                apptMonthList.add(appointment);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptMonthList;
+    }
 
 }

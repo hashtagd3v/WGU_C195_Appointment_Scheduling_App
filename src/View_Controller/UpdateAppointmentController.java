@@ -21,14 +21,12 @@ public class UpdateAppointmentController {
     public TextField updateApptDescriptionText;
     public TextField updateApptLocationText;
     public ComboBox updateApptContactCombo;
-    public Spinner updateApptStartHour;
-    public Spinner updateApptStartMin;
-    public Spinner updateApptEndHour;
-    public Spinner updateApptEndMin;
     public ComboBox updateApptCustomerIDCombo;
     public ComboBox updateApptUserIDCombo;
     public DatePicker updateApptDatePicker;
     public TextField updateApptTypeText;
+    public ComboBox updateApptStartTimeCombo;
+    public ComboBox updateApptEndTimeCombo;
 
     Stage stage;
     Parent scene;

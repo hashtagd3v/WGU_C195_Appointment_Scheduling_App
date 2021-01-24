@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented default combo box list of selections for customers, contacts and user for Add Appointment screen.&#10;Implemented viewing of all appointments from the database for Appointment table view list.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBFirstLevelDiv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBFirstLevelDiv.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddCustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/utils/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/utils/DBConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBAccess/DBContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBContact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBFirstLevelDiv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBFirstLevelDiv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/AddCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DBConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +214,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195/DAODemo3" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -598,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611433540286</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens.">
+      <created>1611445201200</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1611445201200</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -657,7 +667,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added event handler for Log In button to show Welcome screen." />
     <MESSAGE value="Added event handler for Welcome Screen to switch screens for Customers, Appointments and Exit button." />
     <MESSAGE value="Added Java Doc comments to describe log in and welcome screens." />
     <MESSAGE value="Added event handlers for WelcomeController.java. Also added javadoc comments for class &amp; methods in this class." />
@@ -682,7 +691,8 @@
     <MESSAGE value="Added javadoc comments for new methods for this branch." />
     <MESSAGE value="Created Appointment.java class." />
     <MESSAGE value="Implemented default combo box list of selections for customers, contacts and user for Add Appointment screen.&#10;Implemented viewing of all appointments from the database for Appointment table view list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented default combo box list of selections for customers, contacts and user for Add Appointment screen.&#10;Implemented viewing of all appointments from the database for Appointment table view list." />
+    <MESSAGE value="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

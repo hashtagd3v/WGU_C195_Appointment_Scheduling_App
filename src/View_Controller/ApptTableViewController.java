@@ -1,5 +1,6 @@
 package View_Controller;
 
+import DBAccess.DBAppointment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -62,7 +63,16 @@ public class ApptTableViewController implements Initializable {
     public void onActionFilterByMonthBtn(ActionEvent actionEvent) {
 
         if (filterMonthRadioBtn.isSelected()) {
-            //TODO: Implement filtering appointments.
+            apptTableView.setItems(DBAppointment.getAppointmentsByCurrentMonth());
+            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+            apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
+            apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
+            apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
+            apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         }
 
     }

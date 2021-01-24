@@ -28,14 +28,12 @@ public class AddAppointmentController implements Initializable {
     public TextField addApptDescriptionText;
     public TextField addApptLocationText;
     public ComboBox addApptContactCombo;
-    public Spinner addApptStartHour;
-    public Spinner addApptStartMin;
-    public Spinner addApptEndHour;
-    public Spinner addApptEndMin;
     public ComboBox addApptCustomerIDCombo;
     public ComboBox addApptUserIDCombo;
     public DatePicker addApptDatePicker;
     public TextField addApptTypeText;
+    public ComboBox addApptStartTimeCombo;
+    public ComboBox addApptEndTimeCombo;
 
     Stage stage;
     Parent scene;

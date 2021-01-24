@@ -44,7 +44,7 @@ public class DBFirstLevelDiv {
 
     /** @return Returns observable list of all first level division within US only.*/
     public static ObservableList<FirstLevelDivision> getFirstLevelDivisionsByCountry(int countryId){
-        ObservableList<FirstLevelDivision> firstLevelDivisionsUSOnly = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> firstLevelDivisionsFilteredByCountry = FXCollections.observableArrayList();
 
         try{
 
@@ -58,7 +58,7 @@ public class DBFirstLevelDiv {
                 int firstLevelDivId = resultSet.getInt("Division_ID");
                 String firstLevelDivName = resultSet.getString("Division");
                 FirstLevelDivision firstLevelDivision = new FirstLevelDivision(firstLevelDivId, firstLevelDivName);
-                firstLevelDivisionsUSOnly.add(firstLevelDivision);
+                firstLevelDivisionsFilteredByCountry.add(firstLevelDivision);
 
             }
 
@@ -66,7 +66,7 @@ public class DBFirstLevelDiv {
             e.printStackTrace();
         }
 
-        return firstLevelDivisionsUSOnly;
+        return firstLevelDivisionsFilteredByCountry;
 
     }
 
