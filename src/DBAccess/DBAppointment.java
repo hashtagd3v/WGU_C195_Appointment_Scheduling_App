@@ -8,6 +8,7 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /** This class obtains appointment data from the appointments database.*/
@@ -49,6 +50,8 @@ public class DBAppointment {
         return apptList;
     }
 
+    /** This method returns a list of all appointments for current month.
+     * @return Returns list of appointments for current month.*/
     public static ObservableList<Appointment> getAppointmentsByCurrentMonth() {
         ObservableList<Appointment> apptMonthList = FXCollections.observableArrayList();
 
@@ -82,6 +85,41 @@ public class DBAppointment {
         }
 
         return apptMonthList;
+    }
+
+    /** This method creates a new appointment and adds it to the database.
+     * @param title The appointment title
+     * @param desc The appointment description
+     * @param location The appointment location
+     * @param type The appointment type
+     * @param start The appointment start date and time
+     * @param end The appointment end date and time
+     * @param customerId The id of customer with appointment
+     * @param userId The id of user related to the appointment
+     * @param contactId The contact related to the appointment.*/
+    public static void createAppt(String title, String desc, String location, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
+
+        try {
+            String sql = "INSERT INTO appointments VALUES(NULL, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1,title);
+            preparedStatement.setString(2, desc);
+            preparedStatement.setString(3, location);
+            preparedStatement.setString(4, type);
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(start));
+            preparedStatement.setTimestamp(6, Timestamp.valueOf(end));
+            preparedStatement.setInt(7, customerId);
+            preparedStatement.setInt(8, userId);
+            preparedStatement.setInt(9 , contactId);
+
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
