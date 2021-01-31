@@ -9,7 +9,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import static java.sql.Timestamp.*;
 
 /** This class obtains appointment data from the appointments database.*/
 public class DBAppointment {
@@ -21,7 +26,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -32,7 +37,6 @@ public class DBAppointment {
                 String title = resultSet.getString("Title");
                 String desc = resultSet.getString("Description");
                 String location = resultSet.getString("Location");
-                String contact = resultSet.getString("Contact_Name");
                 String type = resultSet.getString("Type");
                 LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
                 LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
@@ -40,7 +44,7 @@ public class DBAppointment {
                 int userId = resultSet.getInt("User_ID");
                 int contactId = resultSet.getInt("Contact_ID");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId, userId, contactId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
                 apptList.add(appointment);
 
             }
@@ -59,7 +63,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID " +
                     "AND month(Start) = month(now())";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
@@ -71,7 +75,6 @@ public class DBAppointment {
                 String title = resultSet.getString("Title");
                 String desc = resultSet.getString("Description");
                 String location = resultSet.getString("Location");
-                String contact = resultSet.getString("Contact_Name");
                 String type = resultSet.getString("Type");
                 LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
                 LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
@@ -79,7 +82,7 @@ public class DBAppointment {
                 int userId = resultSet.getInt("User_ID");
                 int contactId = resultSet.getInt("Contact_ID");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId, userId, contactId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
                 apptMonthList.add(appointment);
 
             }
@@ -89,6 +92,67 @@ public class DBAppointment {
         }
 
         return apptMonthList;
+    }
+
+    /** This method filters appointment table view list by current month.
+     * @return Returns appointments within current week.*/
+    public static ObservableList<Appointment> getAppointmentsByCurrentWeek() {
+        ObservableList<Appointment> apptWeekList = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM appointments WHERE Start >= ? AND Start <= date_add(?, interval 7 day)";
+
+            //******************Get Monday before date now**********************:
+
+            LocalDate today = LocalDate.now();
+            LocalTime midnight = LocalTime.MIDNIGHT;
+
+            //Go backwards until reaching Monday before today:
+            LocalDate monday = today;
+
+            while (monday.getDayOfWeek() != DayOfWeek.MONDAY) {
+                monday = monday.minusDays(1);
+            }
+
+            LocalDateTime mondayMidnight = LocalDateTime.of(monday, midnight);
+            Timestamp timestamp = valueOf(mondayMidnight);
+
+            System.out.println("Monday midnight of this week is: " + mondayMidnight);
+
+            //************End of code snippet to get Monday*********************
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setTimestamp(1, timestamp);
+            preparedStatement.setTimestamp(2, timestamp);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int appointmentId = resultSet.getInt("Appointment_ID");
+                String title = resultSet.getString("Title");
+                String desc = resultSet.getString("Description");
+                String location = resultSet.getString("Location");
+                String type = resultSet.getString("Type");
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
+                LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+                int customerId = resultSet.getInt("Customer_ID");
+                int userId = resultSet.getInt("User_ID");
+                int contactId = resultSet.getInt("Contact_ID");
+
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
+                apptWeekList.add(appointment);
+
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptWeekList;
+
     }
 
     /** This method creates a new appointment and adds it to the database.
@@ -112,8 +176,8 @@ public class DBAppointment {
             preparedStatement.setString(2, desc);
             preparedStatement.setString(3, location);
             preparedStatement.setString(4, type);
-            preparedStatement.setTimestamp(5, Timestamp.valueOf(start));
-            preparedStatement.setTimestamp(6, Timestamp.valueOf(end));
+            preparedStatement.setTimestamp(5, valueOf(start));
+            preparedStatement.setTimestamp(6, valueOf(end));
             preparedStatement.setInt(7, customerId);
             preparedStatement.setInt(8, userId);
             preparedStatement.setInt(9 , contactId);
@@ -149,8 +213,8 @@ public class DBAppointment {
             preparedStatement.setString(2, desc);
             preparedStatement.setString(3, location);
             preparedStatement.setString(4, type);
-            preparedStatement.setTimestamp(5, Timestamp.valueOf(start));
-            preparedStatement.setTimestamp(6, Timestamp.valueOf(end));
+            preparedStatement.setTimestamp(5, valueOf(start));
+            preparedStatement.setTimestamp(6, valueOf(end));
             preparedStatement.setInt(7, customerId);
             preparedStatement.setInt(8, userId);
             preparedStatement.setInt(9, contactId);

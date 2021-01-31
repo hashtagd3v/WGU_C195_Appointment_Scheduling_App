@@ -128,12 +128,6 @@ public class AddAppointmentController implements Initializable {
 
         DBAppointment.createAppt(title, desc, location, type, startLocalDT, endLocalDT, customerIdCombo, userIdCombo, contactCombo);
 
-//        //Check local time now/TESTING (working):
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-//        LocalTime now = LocalTime.now();
-//        System.out.println("Current local time " + dtf.format(now)); //Formats localtime to HH:mm --> format dtf.format()
-//        TODO:Delete above code snippet later.
-
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
         stage.setScene(new Scene(scene));

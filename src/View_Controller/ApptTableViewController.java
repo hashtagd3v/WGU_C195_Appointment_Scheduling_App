@@ -50,7 +50,7 @@ public class ApptTableViewController implements Initializable {
         apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
         apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-        apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
         apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
         apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
@@ -69,7 +69,7 @@ public class ApptTableViewController implements Initializable {
             apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
             apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
             apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
             apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
             apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
             apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
@@ -84,7 +84,18 @@ public class ApptTableViewController implements Initializable {
     public void onActionFilterByWeekBtn(ActionEvent actionEvent) {
 
         if(filterWeekRadioBtn.isSelected()) {
-            //TODO: Implement filtering appointments.
+
+            apptTableView.setItems(DBAppointment.getAppointmentsByCurrentWeek());
+            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+            apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
+            apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
+            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
+            apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
+            apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+
         }
 
     }
@@ -100,7 +111,7 @@ public class ApptTableViewController implements Initializable {
             apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
             apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
             apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
             apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
             apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
             apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
@@ -137,7 +148,7 @@ public class ApptTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionApptUpdateBtn(ActionEvent actionEvent) throws IOException {
 
-        Appointment selectedAppt = (Appointment) apptTableView.getSelectionModel().getSelectedItem();
+        Appointment selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/View_Controller/UpdateAppointmentScreen.fxml"));

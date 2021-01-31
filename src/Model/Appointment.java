@@ -1,7 +1,5 @@
 package Model;
 
-import javafx.collections.ObservableList;
-
 import java.time.LocalDateTime;
 
 /** This is the Appointment class.*/
@@ -11,7 +9,6 @@ public class Appointment {
     private String title;
     private String desc;
     private String location;
-    private String contact;
     private String type;
     private LocalDateTime start;
     private LocalDateTime end;
@@ -19,12 +16,11 @@ public class Appointment {
     private int userId;
     private int contactId;
 
-    public Appointment(int appointmentId, String title, String desc, String location, String contact, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
+    public Appointment(int appointmentId, String title, String desc, String location, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
         this.appointmentId = appointmentId;
         this.title = title;
         this.desc = desc;
         this.location = location;
-        this.contact = contact;
         this.type = type;
         this.start = start;
         this.end = end;
@@ -51,11 +47,6 @@ public class Appointment {
     /** @return Returns the appointment location.*/
     public String getLocation() {
         return location;
-    }
-
-    /** @return Returns the appointment contact assigned.*/
-    public String getContact() {
-        return contact;
     }
 
     /** @return Returns the appointment type.*/
