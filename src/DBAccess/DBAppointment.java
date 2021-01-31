@@ -21,7 +21,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, Type, Start, End, customers.Customer_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -37,8 +37,10 @@ public class DBAppointment {
                 LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
                 LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
                 int customerId = resultSet.getInt("Customer_ID");
+                int userId = resultSet.getInt("User_ID");
+                int contactId = resultSet.getInt("Contact_ID");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId, userId, contactId);
                 apptList.add(appointment);
 
             }
@@ -57,7 +59,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, Type, Start, End, customers.Customer_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID " +
                     "AND month(Start) = month(now())";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
@@ -74,8 +76,10 @@ public class DBAppointment {
                 LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
                 LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
                 int customerId = resultSet.getInt("Customer_ID");
+                int userId = resultSet.getInt("User_ID");
+                int contactId = resultSet.getInt("Contact_ID");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, contact, type, start, end, customerId, userId, contactId);
                 apptMonthList.add(appointment);
 
             }
@@ -100,6 +104,7 @@ public class DBAppointment {
     public static void createAppt(String title, String desc, String location, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
 
         try {
+
             String sql = "INSERT INTO appointments VALUES(NULL, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, ?, ?, ?)";
 
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
@@ -113,6 +118,43 @@ public class DBAppointment {
             preparedStatement.setInt(8, userId);
             preparedStatement.setInt(9 , contactId);
 
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    /** This method updates selected appointment information and sends updates to the database.
+     * @param ApptId the appointment Id
+     * @param title the appointment title
+     * @param desc the appointment description
+     * @param location the appointment location
+     * @param type the appointment type
+     * @param start the appointment start date and time
+     * @param end the appointment end date and time
+     * @param customerId the customer id for the selected appointment
+     * @param userId the user id related to the appointment
+     * @param contactId the contact id related to the appointment.*/
+    public static void updateAppt(int ApptId, String title, String desc, String location, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
+
+        try {
+
+            String sql = "UPDATE appointments set Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? " +
+                    "WHERE Appointment_ID = ?";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, desc);
+            preparedStatement.setString(3, location);
+            preparedStatement.setString(4, type);
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(start));
+            preparedStatement.setTimestamp(6, Timestamp.valueOf(end));
+            preparedStatement.setInt(7, customerId);
+            preparedStatement.setInt(8, userId);
+            preparedStatement.setInt(9, contactId);
+            preparedStatement.setInt(10, ApptId);
             preparedStatement.execute();
 
         }

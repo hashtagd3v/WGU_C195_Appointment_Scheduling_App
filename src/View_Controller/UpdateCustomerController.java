@@ -1,7 +1,6 @@
 package View_Controller;
 
 import DBAccess.DBCustomer;
-import DBAccess.DBFirstLevelDiv;
 import Model.Country;
 import Model.Customer;
 import Model.FirstLevelDivision;
@@ -13,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;

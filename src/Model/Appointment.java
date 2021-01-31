@@ -16,8 +16,10 @@ public class Appointment {
     private LocalDateTime start;
     private LocalDateTime end;
     private int customerId;
+    private int userId;
+    private int contactId;
 
-    public Appointment(int appointmentId, String title, String desc, String location, String contact, String type, LocalDateTime start, LocalDateTime end, int customerId) {
+    public Appointment(int appointmentId, String title, String desc, String location, String contact, String type, LocalDateTime start, LocalDateTime end, int customerId, int userId, int contactId) {
         this.appointmentId = appointmentId;
         this.title = title;
         this.desc = desc;
@@ -27,6 +29,8 @@ public class Appointment {
         this.start = start;
         this.end = end;
         this.customerId = customerId;
+        this.userId = userId;
+        this.contactId = contactId;
     }
 
     /** @return Returns the appointment ID.*/
@@ -72,6 +76,16 @@ public class Appointment {
     /** @return Returns the customer Id of who the appointment is for.*/
     public int getCustomerId() {
         return customerId;
+    }
+
+    /** @return Returns the user Id.*/
+    public int getUserId() {
+        return userId;
+    }
+
+    /** @return Returns the contact Id.*/
+    public int getContactId() {
+        return contactId;
     }
 
 }

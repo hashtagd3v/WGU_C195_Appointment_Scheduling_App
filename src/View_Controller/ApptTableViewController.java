@@ -1,6 +1,7 @@
 package View_Controller;
 
 import DBAccess.DBAppointment;
+import Model.Appointment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -136,8 +137,17 @@ public class ApptTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionApptUpdateBtn(ActionEvent actionEvent) throws IOException {
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/UpdateAppointmentScreen.fxml"));
+        Appointment selectedAppt = (Appointment) apptTableView.getSelectionModel().getSelectedItem();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/View_Controller/UpdateAppointmentScreen.fxml"));
+        loader.load();
+
+        UpdateAppointmentController MODController = loader.getController();
+        MODController.getAppt(selectedAppt);
+
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
         stage.setScene(new Scene(scene));
         stage.show();
 
@@ -146,6 +156,8 @@ public class ApptTableViewController implements Initializable {
     /** This method button enables user to delete current appointment selected.
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionApptDeleteBtn(ActionEvent actionEvent) {
+
+        //TODO: Implement Appointment Delete
 
     }
 

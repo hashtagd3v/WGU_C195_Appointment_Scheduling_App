@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Started implementing features on adding appointment screen except time slices for combo box start and end times.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +123,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Appointment_Table_View_List_From_DB" />
+        <entry key="$PROJECT_DIR$" value="Adding_Appointments" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -199,7 +210,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../WGU Java Project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -614,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611799751008</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database.">
+      <created>1611803255905</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1611803255905</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -673,7 +691,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added event handlers for AddCustomerController.java&#10;Also added javadoc comments for class &amp; methods in this class." />
     <MESSAGE value="Added event handlers for UpdateCustomerController.java&#10;Also added javadoc comments for class &amp; methods in this class." />
     <MESSAGE value="Added event handlers for buttons only ApptTableViewController.java&#10;Also added javadoc comments for class &amp; methods in this class." />
     <MESSAGE value="Added event handlers for buttons only AddAppointmentController.java&#10;Also added javadoc comments for class &amp; methods in this class. Fixed UI for Add appointment screen: converted text fields for Customer &amp; User ID, and appt type to combo boxes; deleted end date picker." />
@@ -698,7 +715,8 @@
     <MESSAGE value="Implemented Appointment table view list filter by current month in Appointment Table View screen." />
     <MESSAGE value="Implemented Appointment table view list filter ALL in Appointment Table View screen." />
     <MESSAGE value="Started implementing features on adding appointment screen except time slices for combo box start and end times." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started implementing features on adding appointment screen except time slices for combo box start and end times." />
+    <MESSAGE value="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,6 +724,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="6" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="9" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

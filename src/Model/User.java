@@ -1,5 +1,10 @@
 package Model;
 
+import javafx.collections.ObservableList;
+
+import static DBAccess.DBCustomer.getAllCustomers;
+import static DBAccess.DBUser.getAllUsers;
+
 /** This is the User class.*/
 public class User {
 
