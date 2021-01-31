@@ -164,6 +164,8 @@ public class DBAppointment {
 
     }
 
+    /** This method deletes an appointment.
+     * @param ApptId the selected appointment Id.*/
     public static void deleteAppt(int ApptId) {
 
         try {
