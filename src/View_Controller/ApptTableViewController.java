@@ -21,7 +21,7 @@ import static DBAccess.DBAppointment.getAllAppointments;
  * Appointment Table View screen displays list of all scheduled appointments in table view.*/
 public class ApptTableViewController implements Initializable {
 
-    public TableView apptTableView;
+    public TableView<Appointment> apptTableView;
     public TableColumn apptIdCol;
     public TableColumn apptTitleCol;
     public TableColumn apptDescriptionCol;
@@ -157,7 +157,13 @@ public class ApptTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionApptDeleteBtn(ActionEvent actionEvent) {
 
-        //TODO: Implement Appointment Delete
+        Appointment selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
+        int apptId = selectedAppt.getAppointmentId();
+
+        DBAppointment.deleteAppt(apptId);
+
+        //Update appointment table view info after deleting appointment:
+        apptTableView.setItems(DBAppointment.getAllAppointments());
 
     }
 

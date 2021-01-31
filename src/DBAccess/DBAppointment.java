@@ -164,4 +164,21 @@ public class DBAppointment {
 
     }
 
+    public static void deleteAppt(int ApptId) {
+
+        try {
+
+            String sql = "DELETE FROM appointments WHERE Appointment_ID = ?";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, ApptId);
+            preparedStatement.execute();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

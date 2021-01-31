@@ -153,6 +153,8 @@ public class UpdateAppointmentController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionUpdateApptDeleteBtn(ActionEvent actionEvent) throws IOException {
 
+        DBAppointment.deleteAppt(apptId);
+
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
         stage.setScene(new Scene(scene));
@@ -166,9 +168,9 @@ public class UpdateAppointmentController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionUpdateApptBtn(ActionEvent actionEvent) throws IOException {
 
+        //Grab information based on user selection/information typed:
         Customer customer = updateApptCustomerIDCombo.getSelectionModel().getSelectedItem();
         int customerId = customer.getCustomerId();
-        System.out.println(customerId);
 
         User user = updateApptUserIDCombo.getSelectionModel().getSelectedItem();
         int userId = user.getUserId();
@@ -186,9 +188,11 @@ public class UpdateAppointmentController implements Initializable {
         LocalTime start = updateApptStartTimeCombo.getValue();
         LocalTime end = updateApptEndTimeCombo.getValue();
 
+        //Convert appointment start/end date and time to combined start/end LocalDateTime:
         LocalDateTime startDT = LocalDateTime.of(date, start);
         LocalDateTime endDT = LocalDateTime.of(date, end);
 
+        //Update appointment in database:
         DBAppointment.updateAppt(apptId, title, desc, location, type, startDT, endDT, customerId, userId, contactId);
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();

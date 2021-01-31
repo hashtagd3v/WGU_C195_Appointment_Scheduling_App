@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented updating appointment. Successfully updated the appointments in the database and reflected on the table view list as well. Removed unnecessary methods (id match) and replaced with enhanced for loops.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +116,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Adding_Appointments" />
+        <entry key="$PROJECT_DIR$" value="Update_Appointment" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -632,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611803255905</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Implemented updating appointment. Successfully updated the appointments in the database and reflected on the table view list as well. Removed unnecessary methods (id match) and replaced with enhanced for loops.">
+      <created>1612060428264</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1612060428264</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -691,7 +691,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added event handlers for UpdateCustomerController.java&#10;Also added javadoc comments for class &amp; methods in this class." />
     <MESSAGE value="Added event handlers for buttons only ApptTableViewController.java&#10;Also added javadoc comments for class &amp; methods in this class." />
     <MESSAGE value="Added event handlers for buttons only AddAppointmentController.java&#10;Also added javadoc comments for class &amp; methods in this class. Fixed UI for Add appointment screen: converted text fields for Customer &amp; User ID, and appt type to combo boxes; deleted end date picker." />
     <MESSAGE value="Added event handlers for buttons only UpdateAppointmentController.java&#10;Also added javadoc comments for class &amp; methods in this class. Fixed UI for Update appointment screen: converted text fields for Customer &amp; User ID, and appt type to combo boxes; deleted end date picker." />
@@ -716,7 +715,8 @@
     <MESSAGE value="Implemented Appointment table view list filter ALL in Appointment Table View screen." />
     <MESSAGE value="Started implementing features on adding appointment screen except time slices for combo box start and end times." />
     <MESSAGE value="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented 15 minute time increments in start and end appointment times. Implemented add appointment button feature. Successfully added appointment to database." />
+    <MESSAGE value="Implemented updating appointment. Successfully updated the appointments in the database and reflected on the table view list as well. Removed unnecessary methods (id match) and replaced with enhanced for loops." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented updating appointment. Successfully updated the appointments in the database and reflected on the table view list as well. Removed unnecessary methods (id match) and replaced with enhanced for loops." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
