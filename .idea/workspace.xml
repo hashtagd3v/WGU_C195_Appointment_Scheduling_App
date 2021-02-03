@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added javadoc comments on new methods implemented.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Convert UTC to eastern time zone; will implement next.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/Appointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Appointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +110,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Delete_appointments" />
+        <entry key="$PROJECT_DIR$" value="Filter_appt_by_week" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -310,13 +303,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial Commit: Database connection successful. First Try.">
-      <created>1608189538055</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1608189538055</updated>
     </task>
     <task id="LOCAL-00002" summary="Refactoring">
       <created>1609130324847</created>
@@ -647,7 +633,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612065772891</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Implemented filtering appointment table view list by current week (Monday before today plus 7 days).">
+      <created>1612079164676</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1612079164676</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Convert UTC to eastern time zone; will implement next.">
+      <created>1612378239491</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1612378239491</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -706,8 +706,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added event handlers for buttons only UpdateAppointmentController.java&#10;Also added javadoc comments for class &amp; methods in this class. Fixed UI for Update appointment screen: converted text fields for Customer &amp; User ID, and appt type to combo boxes; deleted end date picker." />
-    <MESSAGE value="GUI Fix: Updated CustomerTableView.fxml and added Phone number column;&#10;Changed Statement to Prepared Statement on DBQuery.java;&#10;Initialized CustomerTableView screen with Customer data from database when Customer button is clicked from welcome screen." />
     <MESSAGE value="Closed DB connection on Welcome Screen Exit button." />
     <MESSAGE value="Showed list of first level divisions on first level div combo box in Add Customer Screen." />
     <MESSAGE value="Showed list of countries on country combo box in Add Customer Screen." />
@@ -731,7 +729,9 @@
     <MESSAGE value="Implemented updating appointment. Successfully updated the appointments in the database and reflected on the table view list as well. Removed unnecessary methods (id match) and replaced with enhanced for loops." />
     <MESSAGE value="Implemented delete appointment when selecting an appointment from the table view list and deleting an appointment when button is clicked on update appointment screen." />
     <MESSAGE value="Added javadoc comments on new methods implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added javadoc comments on new methods implemented." />
+    <MESSAGE value="Implemented filtering appointment table view list by current week (Monday before today plus 7 days)." />
+    <MESSAGE value="Convert UTC to eastern time zone; will implement next." />
+    <option name="LAST_COMMIT_MESSAGE" value="Convert UTC to eastern time zone; will implement next." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
