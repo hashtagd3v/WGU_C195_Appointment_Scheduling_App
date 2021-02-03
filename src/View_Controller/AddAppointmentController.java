@@ -60,6 +60,8 @@ public class AddAppointmentController implements Initializable {
         //Displays all contacts in Combo Box:
         addApptContactCombo.setItems(DBContact.getAllContacts());
 
+        //TODO: Change code for time variables then convert those variables to eastern time zone.
+
         //List of appointment times 8AM-10PM; 15 minute time increments:
         LocalTime start1 = LocalTime.of(8,0);
         LocalTime end1 = LocalTime.of(21, 45); //can only schedule appt until 9:45PM d/t business hours constraint
