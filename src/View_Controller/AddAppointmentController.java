@@ -20,9 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.ResourceBundle;
 
 /** This class enables user to add new appointment. Users fill out a form with text fields for
@@ -46,6 +44,8 @@ public class AddAppointmentController implements Initializable {
 
     Stage stage;
     Parent scene;
+    private final LocalTime absoluteStart = LocalTime.of(8, 0);
+    private final LocalTime absoluteEnd = LocalTime.of(22, 0);
 
     /** This method initializes add appointment screen combo boxes with a list of selection.
      * @param url the location
@@ -60,19 +60,17 @@ public class AddAppointmentController implements Initializable {
         //Displays all contacts in Combo Box:
         addApptContactCombo.setItems(DBContact.getAllContacts());
 
-        //TODO: Change code for time variables then convert those variables to eastern time zone.
-
         //List of appointment times 8AM-10PM; 15 minute time increments:
-        LocalTime start1 = LocalTime.of(8,0);
-        LocalTime end1 = LocalTime.of(21, 45); //can only schedule appt until 9:45PM d/t business hours constraint
+        LocalTime start1 = absoluteStart;
+        LocalTime end1 = absoluteEnd.minusMinutes(15); //can only schedule appt until 9:45PM d/t business hours constraint
 
         while (start1.isBefore(end1.plusSeconds(1))){
             addApptStartTimeCombo.getItems().add(start1);
             start1 = start1.plusMinutes(15);
         }
 
-        LocalTime start2 = LocalTime.of(8,15); //end time appt starts 15 minutes after first start time slot: 8AM
-        LocalTime end2 = LocalTime.of(22, 0);
+        LocalTime start2 = absoluteStart.plusMinutes(15); //end time appt starts 15 minutes after first start time slot: 8AM
+        LocalTime end2 = absoluteEnd;
 
         while(start2.isBefore(end2.plusMinutes(15))){
             addApptEndTimeCombo.getItems().add(start2);
@@ -113,7 +111,7 @@ public class AddAppointmentController implements Initializable {
 
         Contact contact = addApptContactCombo.getSelectionModel().getSelectedItem();
         //Obtain String contact name based on combo box selection:
-        int contactCombo = contact.getContactId();
+        int contactIdCombo = contact.getContactId();
 
         //Grab date selected by user from date picker:
         LocalDate datePicker = addApptDatePicker.getValue();
@@ -128,7 +126,35 @@ public class AddAppointmentController implements Initializable {
         LocalDateTime startLocalDT = LocalDateTime.of(datePicker, startApptTime);
         LocalDateTime endLocalDT = LocalDateTime.of(datePicker, endApptTime);
 
-        DBAppointment.createAppt(title, desc, location, type, startLocalDT, endLocalDT, customerIdCombo, userIdCombo, contactCombo);
+        ZoneId myZoneId = ZoneId.systemDefault();
+        System.out.println("My Zone Id: " + myZoneId);
+
+        ZonedDateTime myZoneDateTimeStart = ZonedDateTime.of(startLocalDT, myZoneId);
+        ZonedDateTime myZoneDateTimeEnd = ZonedDateTime.of(endLocalDT, myZoneId);
+        System.out.println("User time start: " + myZoneDateTimeStart);
+        System.out.println("User time end: " + myZoneDateTimeEnd);
+
+        ZoneId estZoneId = ZoneId.of("US/Eastern");
+
+        //Convert times user picked from local time to Eastern time:
+        ZonedDateTime estZoneDateTimeStart = myZoneDateTimeStart.withZoneSameInstant(estZoneId);
+        System.out.println("Eastern Time Start  - Converted: " + estZoneDateTimeStart);
+
+        ZonedDateTime estZoneDateTimeEnd = myZoneDateTimeEnd.withZoneSameInstant(estZoneId);
+        System.out.println("Eastern Time End  - Converted: " + estZoneDateTimeEnd);
+
+        //Convert Eastern time zone to LocalDateTime again prior to storing in DB:
+        LocalTime proposedStartEST = estZoneDateTimeStart.toLocalDateTime().toLocalTime();
+        LocalTime proposedEndEST = estZoneDateTimeEnd.toLocalDateTime().toLocalTime();
+
+                                                                                                                        //TODO: Validate times in order/doesn't cross.
+
+        if (proposedStartEST.isBefore(absoluteStart) || proposedEndEST.isAfter(absoluteEnd)) {
+            System.out.println("Not in business hours.");                                                               //TODO: Create alert for this.
+            return;
+        }
+
+        DBAppointment.createAppt(title, desc, location, type, startLocalDT, endLocalDT, customerIdCombo, userIdCombo, contactIdCombo);
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));

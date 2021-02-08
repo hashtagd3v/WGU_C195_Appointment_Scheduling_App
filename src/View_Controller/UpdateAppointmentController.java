@@ -21,9 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.ResourceBundle;
 
 /** This class enables user to edit/update information for appointment that was selected from
@@ -48,6 +46,8 @@ public class UpdateAppointmentController implements Initializable {
     Stage stage;
     Parent scene;
     private int apptId;
+    private final LocalTime absoluteStart = LocalTime.of(8, 0);
+    private final LocalTime absoluteEnd = LocalTime.of(22, 0);
 
     /** This method initializes the update appointment screen with combo box selections.
      * @param url the location
@@ -61,10 +61,6 @@ public class UpdateAppointmentController implements Initializable {
         updateApptUserIDCombo.setItems(DBUser.getAllUsers());
         //Displays all contacts in Combo Box:
         updateApptContactCombo.setItems(DBContact.getAllContacts());
-
-        LocalTime absoluteStart = LocalTime.of(8, 0); //TODO: convert times to Eastern times
-        LocalTime absoluteEnd = LocalTime.of(22, 0);
-
 
         //List of appointment times 8AM-10PM; 15 minute time increments:
         LocalTime start1 = absoluteStart;
@@ -189,11 +185,39 @@ public class UpdateAppointmentController implements Initializable {
         LocalTime end = updateApptEndTimeCombo.getValue();
 
         //Convert appointment start/end date and time to combined start/end LocalDateTime:
-        LocalDateTime startDT = LocalDateTime.of(date, start);
-        LocalDateTime endDT = LocalDateTime.of(date, end);
+        LocalDateTime starLDT = LocalDateTime.of(date, start);
+        LocalDateTime endLDT = LocalDateTime.of(date, end);
+
+        ZoneId myZoneId = ZoneId.systemDefault();
+        System.out.println("My Zone Id: " + myZoneId);
+
+        ZonedDateTime myZoneDateTimeStart = ZonedDateTime.of(starLDT, myZoneId);
+        ZonedDateTime myZoneDateTimeEnd = ZonedDateTime.of(endLDT, myZoneId);
+        System.out.println("User time start: " + myZoneDateTimeStart);
+        System.out.println("User time end: " + myZoneDateTimeEnd);
+
+        ZoneId estZoneId = ZoneId.of("US/Eastern");
+
+        //Convert times user picked from local time to Eastern time:
+        ZonedDateTime estZoneDateTimeStart = myZoneDateTimeStart.withZoneSameInstant(estZoneId);
+        System.out.println("Eastern Time Start  - Converted: " + estZoneDateTimeStart);
+
+        ZonedDateTime estZoneDateTimeEnd = myZoneDateTimeEnd.withZoneSameInstant(estZoneId);
+        System.out.println("Eastern Time End  - Converted: " + estZoneDateTimeEnd);
+
+        //Convert Eastern time zone to LocalDateTime again prior to storing in DB:
+        LocalTime proposedStartEST = estZoneDateTimeStart.toLocalDateTime().toLocalTime();
+        LocalTime proposedEndEST = estZoneDateTimeEnd.toLocalDateTime().toLocalTime();
+
+                                                                                                                        //TODO: Validate times in order/doesn't cross.
+
+        if (proposedStartEST.isBefore(absoluteStart) || proposedEndEST.isAfter(absoluteEnd)) {
+            System.out.println("Not in business hours.");                                                               //TODO: Create alert for this.
+            return;
+        }
 
         //Update appointment in database:
-        DBAppointment.updateAppt(apptId, title, desc, location, type, startDT, endDT, customerId, userId, contactId);
+        DBAppointment.updateAppt(apptId, title, desc, location, type, starLDT, endLDT, customerId, userId, contactId);
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));

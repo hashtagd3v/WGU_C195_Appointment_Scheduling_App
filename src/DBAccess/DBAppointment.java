@@ -26,7 +26,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_Name, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -43,8 +43,9 @@ public class DBAppointment {
                 int customerId = resultSet.getInt("Customer_ID");
                 int userId = resultSet.getInt("User_ID");
                 int contactId = resultSet.getInt("Contact_ID");
+                String contactName = resultSet.getString("Contact_Name");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
                 apptList.add(appointment);
 
             }
@@ -63,7 +64,7 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, Type, Start, End, customers.Customer_ID, User_ID " +
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID " +
                     "AND month(Start) = month(now())";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
@@ -81,8 +82,9 @@ public class DBAppointment {
                 int customerId = resultSet.getInt("Customer_ID");
                 int userId = resultSet.getInt("User_ID");
                 int contactId = resultSet.getInt("Contact_ID");
+                String contactName = resultSet.getString("Contact_Name");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
                 apptMonthList.add(appointment);
 
             }
@@ -101,7 +103,9 @@ public class DBAppointment {
 
         try {
 
-            String sql = "SELECT * FROM appointments WHERE Start >= ? AND Start <= date_add(?, interval 7 day)";
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND " +
+                    "Start >= ? AND Start <= date_add(?, interval 7 day)"; //TODO: Change * to select one by one - join
 
             //******************Get Monday before date now**********************:
 
@@ -117,8 +121,6 @@ public class DBAppointment {
 
             LocalDateTime mondayMidnight = LocalDateTime.of(monday, midnight);
             Timestamp timestamp = valueOf(mondayMidnight);
-
-            System.out.println("Monday midnight of this week is: " + mondayMidnight);
 
             //************End of code snippet to get Monday*********************
 
@@ -140,8 +142,9 @@ public class DBAppointment {
                 int customerId = resultSet.getInt("Customer_ID");
                 int userId = resultSet.getInt("User_ID");
                 int contactId = resultSet.getInt("Contact_ID");
+                String contactName = resultSet.getString("Contact_Name");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId);
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName); //FIXME
                 apptWeekList.add(appointment);
 
             }
