@@ -85,4 +85,5 @@ public class Appointment {
     public String getContactName() {
         return contactName;
     }
+
 }

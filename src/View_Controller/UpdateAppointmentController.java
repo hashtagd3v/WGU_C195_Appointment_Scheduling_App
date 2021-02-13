@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -185,39 +182,51 @@ public class UpdateAppointmentController implements Initializable {
         LocalTime end = updateApptEndTimeCombo.getValue();
 
         //Convert appointment start/end date and time to combined start/end LocalDateTime:
-        LocalDateTime starLDT = LocalDateTime.of(date, start);
+        LocalDateTime startLDT = LocalDateTime.of(date, start);
         LocalDateTime endLDT = LocalDateTime.of(date, end);
 
+        //Use system default zone Id:
         ZoneId myZoneId = ZoneId.systemDefault();
-        System.out.println("My Zone Id: " + myZoneId);
 
-        ZonedDateTime myZoneDateTimeStart = ZonedDateTime.of(starLDT, myZoneId);
+        //Assign customer selected times to system default ZoneId:
+        ZonedDateTime myZoneDateTimeStart = ZonedDateTime.of(startLDT, myZoneId);
         ZonedDateTime myZoneDateTimeEnd = ZonedDateTime.of(endLDT, myZoneId);
-        System.out.println("User time start: " + myZoneDateTimeStart);
-        System.out.println("User time end: " + myZoneDateTimeEnd);
 
+        //Assign variable for eastern time zone:
         ZoneId estZoneId = ZoneId.of("US/Eastern");
 
-        //Convert times user picked from local time to Eastern time:
+        //Convert times user picked from system default time to Eastern time:
         ZonedDateTime estZoneDateTimeStart = myZoneDateTimeStart.withZoneSameInstant(estZoneId);
-        System.out.println("Eastern Time Start  - Converted: " + estZoneDateTimeStart);
-
         ZonedDateTime estZoneDateTimeEnd = myZoneDateTimeEnd.withZoneSameInstant(estZoneId);
-        System.out.println("Eastern Time End  - Converted: " + estZoneDateTimeEnd);
 
-        //Convert Eastern time zone to LocalDateTime again prior to storing in DB:
+        //Convert Eastern time zone to LocalDateTime again to compare to final LocalTime absoluteStart/End:
         LocalTime proposedStartEST = estZoneDateTimeStart.toLocalDateTime().toLocalTime();
         LocalTime proposedEndEST = estZoneDateTimeEnd.toLocalDateTime().toLocalTime();
 
-                                                                                                                        //TODO: Validate times in order/doesn't cross.
+        //Validate times in order/doesn't cross:
+        if(proposedStartEST.isAfter(proposedEndEST) || proposedStartEST.equals(proposedEndEST)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Selected appointment start time is after or equal to end time.");
+            alert.setContentText("Please select different appointment start and/or end time slot.");
 
+            alert.showAndWait();
+            return;
+        }                                                                                                               //TODO: Validate times in order/doesn't cross.
+
+        //Compare converted Eastern time zone appt times picked by user to set business hours in EST:
         if (proposedStartEST.isBefore(absoluteStart) || proposedEndEST.isAfter(absoluteEnd)) {
-            System.out.println("Not in business hours.");                                                               //TODO: Create alert for this.
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Selected appointment times are outside of business hours.");
+            alert.setContentText("Please select different appointment times. Business hours are between 8:00AM-10:00PM EST.");
+
+            alert.showAndWait();
             return;
         }
 
         //Update appointment in database:
-        DBAppointment.updateAppt(apptId, title, desc, location, type, starLDT, endLDT, customerId, userId, contactId);
+        DBAppointment.updateAppt(apptId, title, desc, location, type, startLDT, endLDT, customerId, userId, contactId);
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
