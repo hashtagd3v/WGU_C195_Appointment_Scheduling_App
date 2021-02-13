@@ -105,7 +105,7 @@ public class DBAppointment {
 
             String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
                     "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND " +
-                    "Start >= ? AND Start <= date_add(?, interval 7 day)"; //TODO: Change * to select one by one - join
+                    "Start >= ? AND Start <= date_add(?, interval 7 day)";
 
             //******************Get Monday before date now**********************:
 
@@ -144,7 +144,7 @@ public class DBAppointment {
                 int contactId = resultSet.getInt("Contact_ID");
                 String contactName = resultSet.getString("Contact_Name");
 
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName); //FIXME
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
                 apptWeekList.add(appointment);
 
             }

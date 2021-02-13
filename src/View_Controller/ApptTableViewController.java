@@ -50,7 +50,7 @@ public class ApptTableViewController implements Initializable {
         apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
         apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-        apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactName")); //FIXME: Convert this to show contact name instead of ID.
+        apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactName"));
         apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
         apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
@@ -64,16 +64,9 @@ public class ApptTableViewController implements Initializable {
     public void onActionFilterByMonthBtn(ActionEvent actionEvent) {
 
         if (filterMonthRadioBtn.isSelected()) {
+
             apptTableView.setItems(DBAppointment.getAppointmentsByCurrentMonth());
-//            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
-//            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-//            apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
-//            apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-//            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactName"));
-//            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-//            apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
-//            apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
-//            apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+
         }
 
     }
@@ -86,15 +79,6 @@ public class ApptTableViewController implements Initializable {
         if(filterWeekRadioBtn.isSelected()) {
 
             apptTableView.setItems(DBAppointment.getAppointmentsByCurrentWeek());
-//            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
-//            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-//            apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
-//            apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-//            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
-//            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-//            apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
-//            apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
-//            apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
 
         }
 
@@ -106,16 +90,9 @@ public class ApptTableViewController implements Initializable {
     public void onActionFilterAllBtn(ActionEvent actionEvent) {
 
         if (filterAllRadioBtn.isSelected()) {
+
             apptTableView.setItems(getAllAppointments());
-//            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
-//            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-//            apptDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
-//            apptLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-//            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
-//            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-//            apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
-//            apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
-//            apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+
         }
 
     }
