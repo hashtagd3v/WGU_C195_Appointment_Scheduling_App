@@ -52,8 +52,10 @@ public class AddAppointmentController implements Initializable {
 
         //Displays all customers in Combo Box:
         addApptCustomerIDCombo.setItems(DBCustomer.getAllCustomers());
+
         //Displays all users in Combo Box:
         addApptUserIDCombo.setItems(DBUser.getAllUsers());
+
         //Displays all contacts in Combo Box:
         addApptContactCombo.setItems(DBContact.getAllContacts());
 

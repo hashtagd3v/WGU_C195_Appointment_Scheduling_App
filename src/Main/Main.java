@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import utils.DBConnection;
 
 import java.sql.Connection;
+import java.util.Locale;
 
 /** This is an appointment scheduling app.*/
 public class Main extends Application {
@@ -28,8 +29,13 @@ public class Main extends Application {
      * @param args the command line arguments.
      * */
     public static void main(String[] args) {
+
+        //FIXME: Set default locale to FR/Erase this code snippet prior to submitting:
+        Locale.setDefault(new Locale("fr"));
+
         Connection conn = DBConnection.startConnection();
         launch(args);
         DBConnection.closeConnection();
     }
+
 }

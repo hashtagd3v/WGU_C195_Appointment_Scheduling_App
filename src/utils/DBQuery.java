@@ -7,7 +7,9 @@ public class DBQuery {
 
     private static PreparedStatement statement;
 
-    /** This method creates a statement object.*/
+    /** This method creates a statement object.
+     * @param conn the connection.
+     * @param sqlStatement the sql statement.*/
     public static void setPreparedStatement(Connection conn, String sqlStatement) throws SQLException {
         statement = conn.prepareStatement(sqlStatement);
     }
