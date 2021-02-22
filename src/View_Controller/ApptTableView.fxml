@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.ApptTableViewController">
    <children>
@@ -57,8 +64,12 @@
                </toggleGroup></RadioButton>
             <RadioButton fx:id="filterWeekRadioBtn" mnemonicParsing="false" onAction="#onActionFilterByWeekBtn" text="Week" toggleGroup="$filterApptToggle" />
             <RadioButton fx:id="filterAllRadioBtn" mnemonicParsing="false" onAction="#onActionFilterAllBtn" selected="true" text="All" toggleGroup="$filterApptToggle" />
-            <Region prefHeight="80.0" prefWidth="363.0" />
-            <Button mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back" />
+            <Region prefHeight="80.0" prefWidth="275.0" />
+            <Button layoutX="650.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptReportBtn" prefHeight="30.0" prefWidth="90.0" text="Reports">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptAddBtn" prefHeight="30.0" prefWidth="90.0" text="Add">
                <font>
                   <Font name="System Bold" size="12.0" />
