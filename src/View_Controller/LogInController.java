@@ -66,6 +66,8 @@ public class LogInController implements Initializable {
      * @param actionEvent the event or mouse click on Log In button.*/
     public void onActionLogIn(ActionEvent actionEvent) throws IOException {
 
+        //FIXME: password has to match exactly before letting user log in!!!
+
         //Get string input from text fields:
         String userId = userIdText.getText();
         String password = passwordText.getText();

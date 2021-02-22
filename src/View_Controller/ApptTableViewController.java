@@ -141,7 +141,7 @@ public class ApptTableViewController implements Initializable {
 
     }
 
-    /** This method button enables user to delete current appointment selected.
+    /** This method enables user to delete current appointment selected.
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionApptDeleteBtn(ActionEvent actionEvent) {
 
@@ -152,6 +152,17 @@ public class ApptTableViewController implements Initializable {
 
         //Update appointment table view info after deleting appointment:
         apptTableView.setItems(DBAppointment.getAllAppointments());
+
+    }
+
+    /** This method enables user to go to the reports screen.
+     * @param actionEvent the event or mouse click on Reports button.*/
+    public void onActionApptReportBtn(ActionEvent actionEvent) throws IOException {
+
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/SelectReports.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 
