@@ -25,18 +25,24 @@
             <Region prefHeight="100.0" prefWidth="150.0" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="150.0" text="Log-In Location:">
+                  <Label fx:id="logInLocationLbl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" text="Log-In Location:">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
                   </Label>
                   <Label fx:id="userLocationLabel" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="150.0" text="My Location">
                      <font>
                         <Font name="System Italic" size="10.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
@@ -44,24 +50,27 @@
       </HBox>
       <HBox layoutY="106.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="User ID:" textAlignment="RIGHT">
+            <Label fx:id="userIdLbl" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="User ID:" textAlignment="RIGHT">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="30.0" />
                </padding>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="userIdText" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Type your user ID">
+            <TextField fx:id="userIdText" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Type your user ID">
                <HBox.margin>
                   <Insets left="20.0" top="35.0" />
                </HBox.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </TextField>
          </children>
       </HBox>
       <HBox layoutY="184.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="Password:" textAlignment="RIGHT">
+            <Label fx:id="passwordLbl" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="Password:" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -72,16 +81,19 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField fx:id="passwordText" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Type your password">
+            <TextField fx:id="passwordText" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Type your password">
                <HBox.margin>
                   <Insets left="20.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </TextField>
          </children>
       </HBox>
       <HBox layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionLogIn" prefHeight="30.0" prefWidth="100.0" text="Log In">
+            <Button fx:id="logInBtnLbl" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionLogIn" prefHeight="30.0" prefWidth="100.0" text="Log In">
                <HBox.margin>
                   <Insets left="450.0" top="30.0" />
                </HBox.margin>

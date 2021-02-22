@@ -212,7 +212,7 @@ public class UpdateAppointmentController implements Initializable {
 
             alert.showAndWait();
             return;
-        }                                                                                                               //TODO: Validate times in order/doesn't cross.
+        }
 
         //Compare converted Eastern time zone appt times picked by user to set business hours in EST:
         if (proposedStartEST.isBefore(absoluteStart) || proposedEndEST.isAfter(absoluteEnd)) {

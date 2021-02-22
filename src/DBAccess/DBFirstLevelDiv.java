@@ -42,7 +42,8 @@ public class DBFirstLevelDiv {
         return divList;
     }
 
-    /** @return Returns observable list of all first level division within US only.*/
+    /** @param countryId the country id.
+     * @return Returns observable list of all first level division within selected country.*/
     public static ObservableList<FirstLevelDivision> getFirstLevelDivisionsByCountry(int countryId){
         ObservableList<FirstLevelDivision> firstLevelDivisionsFilteredByCountry = FXCollections.observableArrayList();
 
