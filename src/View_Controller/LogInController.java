@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -40,8 +41,13 @@ public class LogInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        //Detect system default Zone Id and display on user location label:
+        ZoneId myZoneId = ZoneId.systemDefault();
+        userLocationLabel.setText(String.valueOf(myZoneId));
+
         ResourceBundle rb = ResourceBundle.getBundle("Trans", Locale.getDefault());
 
+        //Detect if system default language is french and translate:
         if (Locale.getDefault().getLanguage().equals("fr")) {
             userIdLbl.setText(rb.getString("userId"));
             passwordLbl.setText(rb.getString("password"));

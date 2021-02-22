@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.DBConnection;
 
-import java.sql.Connection;
 import java.util.Locale;
 
 /** This is an appointment scheduling app.*/
@@ -36,6 +35,7 @@ public class Main extends Application {
         DBConnection.startConnection();
         launch(args);
         DBConnection.closeConnection();
+
     }
 
 }
