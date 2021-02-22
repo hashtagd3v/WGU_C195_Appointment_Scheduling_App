@@ -9,6 +9,8 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /** This is the user class to access users database.*/
 public class DBUser {
@@ -57,22 +59,56 @@ public class DBUser {
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            ResourceBundle rb = ResourceBundle.getBundle("Trans", Locale.getDefault());
+
                 if (!resultSet.next()) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Logging In");
-                    alert.setHeaderText("Username or password does not match our records.");
-                    alert.setContentText("Please re-enter username and password.");
 
-                    alert.showAndWait();
+                    if (Locale.getDefault().getLanguage().equals("fr")) {
+
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle(rb.getString("errorLogInTitle"));
+                        alert.setHeaderText(rb.getString("errorLogInHeader"));
+                        alert.setContentText(rb.getString("errorLogInContent"));
+
+                        alert.showAndWait();
+
+                    } else {
+
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Logging In");
+                        alert.setHeaderText("Username or password does not match our records.");
+                        alert.setContentText("Please re-enter username and password.");
+
+                        alert.showAndWait();
+
+                    }
+
                     match = 0;
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Log-In Successful!");
 
-                    alert.showAndWait();
+                } else {
+
+                    if (Locale.getDefault().getLanguage().equals("fr")) {
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle(rb.getString("infoLogInTitle"));
+                        alert.setHeaderText(null);
+                        alert.setContentText(rb.getString("infoLogInContent"));
+
+                        alert.showAndWait();
+
+                    } else {
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Success");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Log-In Successful!");
+
+                        alert.showAndWait();
+
+                    }
+
                     match = 1;
+
                 }
 
         } catch (SQLException e) {

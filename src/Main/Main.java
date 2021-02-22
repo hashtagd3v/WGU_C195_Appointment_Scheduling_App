@@ -33,7 +33,7 @@ public class Main extends Application {
         //FIXME: Set default locale to FR/Erase this code snippet prior to submitting:
         Locale.setDefault(new Locale("fr"));
 
-        Connection conn = DBConnection.startConnection();
+        DBConnection.startConnection();
         launch(args);
         DBConnection.closeConnection();
     }
