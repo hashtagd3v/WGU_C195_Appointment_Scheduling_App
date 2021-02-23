@@ -3,6 +3,7 @@ package DBAccess;
 import Model.Appointment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import utils.DBConnection;
 
 import java.sql.PreparedStatement;
@@ -137,7 +138,7 @@ public class DBAppointment {
                 String desc = resultSet.getString("Description");
                 String location = resultSet.getString("Location");
                 String type = resultSet.getString("Type");
-                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();     //UTC
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
                 LocalDateTime end  = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
                 int customerId = resultSet.getInt("Customer_ID");
                 int userId = resultSet.getInt("User_ID");
@@ -155,6 +156,67 @@ public class DBAppointment {
         }
 
         return apptWeekList;
+
+    }
+
+    /** This method filters appointments scheduled for current day only.
+     * @return Returns appointments scheduled for today only.*/
+    public static ObservableList<Appointment> getAppointmentsToday() {
+        ObservableList<Appointment> apptTodayList = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND " +
+                    "Start >= ? AND Start <= ?";
+
+            //Get today's date:
+            LocalDate today = LocalDate.now();
+
+            //Set midnight time:
+            LocalTime midnight = LocalTime.MIDNIGHT;
+
+            //Set 12:59PM time:
+            LocalTime twelveFiftyNine = LocalTime.MIDNIGHT.minusMinutes(1);
+
+            //Set LocalDateTime and Timestamp for start date/time range -- today, midnight:
+            LocalDateTime todayMidnight = LocalDateTime.of(today, midnight);
+            Timestamp timestampStart = valueOf(todayMidnight);
+
+            //Set LocalDateTime and Timestamp for end date/time range -- today, 12:59PM:
+            LocalDateTime lastMinToday = LocalDateTime.of(today, twelveFiftyNine);
+            Timestamp timestampEnd = valueOf(lastMinToday);
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setTimestamp(1, timestampStart);
+            preparedStatement.setTimestamp(2, timestampEnd);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+
+                    int appointmentId = resultSet.getInt("Appointment_ID");
+                    String title = resultSet.getString("Title");
+                    String desc = resultSet.getString("Description");
+                    String location = resultSet.getString("Location");
+                    String type = resultSet.getString("Type");
+                    LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
+                    LocalDateTime end = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+                    int customerId = resultSet.getInt("Customer_ID");
+                    int userId = resultSet.getInt("User_ID");
+                    int contactId = resultSet.getInt("Contact_ID");
+                    String contactName = resultSet.getString("Contact_Name");
+
+                    Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
+                    apptTodayList.add(appointment);
+
+                }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptTodayList;
 
     }
 
@@ -193,6 +255,7 @@ public class DBAppointment {
         }
 
     }
+
     /** This method updates selected appointment information and sends updates to the database.
      * @param ApptId the appointment Id
      * @param title the appointment title
