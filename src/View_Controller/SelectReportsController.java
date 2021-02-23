@@ -35,9 +35,12 @@ public class SelectReportsController {
 
     /** This method takes user to a screen that shows list of scheduled appointments for the day.
      * @param actionEvent the event or mouse click on Appointments Today button.*/
-    public void onActionShowApptsTodayBtn(ActionEvent actionEvent) {
+    public void onActionShowApptsTodayBtn(ActionEvent actionEvent) throws IOException {
 
-
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptsToday.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 
