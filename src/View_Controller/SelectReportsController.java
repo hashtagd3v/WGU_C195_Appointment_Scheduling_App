@@ -1,9 +1,11 @@
 package View_Controller;
 
+import DBAccess.DBAppointment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -37,10 +39,23 @@ public class SelectReportsController {
      * @param actionEvent the event or mouse click on Appointments Today button.*/
     public void onActionShowApptsTodayBtn(ActionEvent actionEvent) throws IOException {
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptsToday.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if (DBAppointment.getAppointmentsToday().isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Appointments");
+            alert.setHeaderText(null);
+            alert.setContentText("No scheduled appointments for today.");
+
+            alert.showAndWait();
+
+        } else {
+
+            stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptsToday.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        }
 
     }
 

@@ -147,8 +147,8 @@ public class UpdateCustomerController implements Initializable {
         // This filters the first level division selection depending on country selected:
         updateFirstLdCombo.setItems(getFirstLevelDivisionsByCountry(countryId));
 
-        //TODO: Figure out how to clear selection for first level division combo box every time country combo box is selected.
-
     }
+
+    //TODO: Add Clear selection and info button.
 
 }

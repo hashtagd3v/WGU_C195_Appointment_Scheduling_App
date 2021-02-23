@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,8 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /** This class enables user to show a generated report of appointments scheduled for current day.*/
@@ -33,7 +30,6 @@ public class ApptsTodayController implements Initializable {
     public TableColumn apptStartDateTimeCol;
     public TableColumn apptEndDateTimeCol;
     public TableColumn apptCustomerIDCol;
-    public Button backBtn;
 
     Stage stage;
     Parent scene;
@@ -55,15 +51,6 @@ public class ApptsTodayController implements Initializable {
         apptStartDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("start"));
         apptEndDateTimeCol.setCellValueFactory(new PropertyValueFactory<>("end"));
         apptCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
-
-        if (DBAppointment.getAppointmentsToday().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No Appointments");
-            alert.setHeaderText(null);
-            alert.setContentText("No scheduled appointments for today.");
-
-            alert.showAndWait();
-        }
 
     }
 
