@@ -29,9 +29,12 @@ public class SelectReportsController {
 
     /** This method takes user to a screen where it shows appointment schedule for each contact.
      * @param actionEvent the event or mouse click on Contact Appointment Schedule button.*/
-    public void onActionContactApptSchedBtn(ActionEvent actionEvent) {
+    public void onActionContactApptSchedBtn(ActionEvent actionEvent) throws IOException {
 
-
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ContactSchedule.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 

@@ -3,7 +3,6 @@ package DBAccess;
 import Model.Appointment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 import utils.DBConnection;
 
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static java.sql.Timestamp.*;
+import static java.sql.Timestamp.valueOf;
 
 /** This class obtains appointment data from the appointments database.*/
 public class DBAppointment {
@@ -218,6 +217,48 @@ public class DBAppointment {
 
         return apptTodayList;
 
+    }
+
+    /** This method filters appointment by selected contact only.
+     * @param id the Contact_ID of the selected contact.
+     * @return Returns a list of appointments for selected contact.*/
+    public static ObservableList<Appointment> getApptsByContact(int id) {
+        ObservableList<Appointment> apptListByContact = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND contacts.Contact_ID = ?";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int appointmentId = resultSet.getInt("Appointment_ID");
+                String title = resultSet.getString("Title");
+                String desc = resultSet.getString("Description");
+                String location = resultSet.getString("Location");
+                String type = resultSet.getString("Type");
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
+                LocalDateTime end = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+                int customerId = resultSet.getInt("Customer_ID");
+                int userId = resultSet.getInt("User_ID");
+                int contactId = resultSet.getInt("Contact_ID");
+                String contactName = resultSet.getString("Contact_Name");
+
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
+                apptListByContact.add(appointment);
+
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptListByContact;
     }
 
     /** This method creates a new appointment and adds it to the database.
