@@ -47,7 +47,7 @@
       <HBox alignment="BOTTOM_RIGHT" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1050.0" spacing="10.0">
          <children>
             <Region prefHeight="80.0" prefWidth="275.0" />
-            <Button fx:id="backBtn" layoutX="650.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back">
+            <Button layoutX="650.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>

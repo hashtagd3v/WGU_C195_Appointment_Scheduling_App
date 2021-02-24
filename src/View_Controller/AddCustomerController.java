@@ -110,4 +110,6 @@ public class AddCustomerController implements Initializable {
 
     }
 
+    //TODO: Add Clear selection and info button.
+
 }

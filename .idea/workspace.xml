@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Created GUI screen for report selection. Also created controller class and set up for reports.">
-      <change afterPath="$PROJECT_DIR$/javadoc/View_Controller/ApptsTodayController.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View_Controller/ApptsToday.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View_Controller/ApptsTodayController.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Changed feature to show an alert when appointments are empty and not proceed to next screen.">
+      <change afterPath="$PROJECT_DIR$/javadoc/View_Controller/ContactScheduleController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View_Controller/ContactSchedule.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View_Controller/ContactScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBAppointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBAppointment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBContact.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBContact.html" afterDir="false" />
@@ -31,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/AddAppointmentController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/AddAppointmentController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/AddCustomerController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/AddCustomerController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/ApptTableViewController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/ApptTableViewController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/ApptsTodayController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/ApptsTodayController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/CustomerTableViewController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/CustomerTableViewController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/LogInController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/LogInController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/SelectReportsController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/SelectReportsController.html" afterDir="false" />
@@ -73,8 +74,8 @@
       <change beforePath="$PROJECT_DIR$/javadoc/utils/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/utils/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/SelectReportsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/SelectReportsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/SelectReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/SelectReportsController.java" afterDir="false" />
     </list>
@@ -183,7 +184,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Reports_GUI" />
+        <entry key="$PROJECT_DIR$" value="Appointments_Today_Report_Features" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -378,20 +379,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00010" summary="Created Update Appointment Screen">
-      <created>1609569153565</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1609569153565</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Created Appointment View/Filter Screen">
-      <created>1609571048044</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1609571048044</updated>
     </task>
     <task id="LOCAL-00012" summary="Added Customer and FirstLevelDivision class; deleted search buttons for table  view.">
       <created>1609690264202</created>
@@ -722,7 +709,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613974034992</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Implemented report #3: Show only appointments for current day.">
+      <created>1614054189442</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1614054189443</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Changed feature to show an alert when appointments are empty and not proceed to next screen.">
+      <created>1614055949838</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1614055949838</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -781,8 +782,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Deleted unnecessary variables." />
-    <MESSAGE value="Implemented update customer features in UpdateCustomerController.java; successfully updated customers database." />
     <MESSAGE value="Implemented delete customer feature in CustomerTableViewController.java and UpdateCustomerController.java; successfully deleted selected customers from both screens." />
     <MESSAGE value="Implemented UpdateCustomerController.java first level division and country combo boxes default selection to customer's selected information. Added ID search methods to FirstLevelDivision.java and Country.java." />
     <MESSAGE value="Implemented selection of country from combo box will filter the list of selection in first level division combo boxes for both Add and Update customer screens." />
@@ -806,7 +805,9 @@
     <MESSAGE value="Translated Error and Information Alerts to French based on system's default language if French." />
     <MESSAGE value="Implemented user zone id detection and display it on user location label in the log in screen." />
     <MESSAGE value="Created GUI screen for report selection. Also created controller class and set up for reports." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created GUI screen for report selection. Also created controller class and set up for reports." />
+    <MESSAGE value="Implemented report #3: Show only appointments for current day." />
+    <MESSAGE value="Changed feature to show an alert when appointments are empty and not proceed to next screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed feature to show an alert when appointments are empty and not proceed to next screen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
