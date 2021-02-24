@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.ContactScheduleController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1050.0">
+         <children>
+            <Label text="Appointment List By Contact Report">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Region prefHeight="60.0" prefWidth="458.0">
+               <HBox.margin>
+                  <Insets left="100.0" right="80.0" />
+               </HBox.margin>
+            </Region>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox layoutY="93.0" prefHeight="300.0" prefWidth="1050.0">
+         <children>
+            <TableView fx:id="apptTableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="1000.0">
+              <columns>
+                <TableColumn fx:id="apptIdCol" prefWidth="77.0" text="Appt ID" />
+                <TableColumn fx:id="apptTitleCol" prefWidth="193.0" text="Title" />
+                  <TableColumn fx:id="apptDescriptionCol" prefWidth="136.0" text="Description" />
+                  <TableColumn fx:id="apptLocationCol" prefWidth="108.0" text="Location" />
+                  <TableColumn fx:id="apptTypeCol" prefWidth="123.0" text="Type" />
+                  <TableColumn fx:id="apptStartDateTimeCol" prefWidth="138.0" text="Start Date &amp; Time" />
+                  <TableColumn fx:id="apptEndDateTimeCol" prefWidth="128.0" text="End Date &amp; Time" />
+                  <TableColumn fx:id="apptCustomerIDCol" prefWidth="96.0" text="Customer ID" />
+              </columns>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1050.0" spacing="10.0">
+         <children>
+            <Button layoutX="650.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionApptBackBtn" prefHeight="30.0" prefWidth="90.0" text="Back">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin></Button>
+            <Region prefHeight="80.0" prefWidth="450.0" />
+            <Label text="Filter By Contact:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="selectContactCombo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionContactChoiceCombo" prefHeight="25.0" prefWidth="150.0" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionGenerateContactReportBtn" prefHeight="25.0" prefWidth="125.0" text="Generate Report">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
