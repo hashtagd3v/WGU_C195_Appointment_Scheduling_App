@@ -261,6 +261,37 @@ public class DBAppointment {
         return apptListByContact;
     }
 
+    /** This method allows user to run report for number of customer appointments by month and type.
+     * @param month The index position + 1 in the ObservableList for month.*/
+    public static ObservableList<Appointment> getApptByMonthAndType(int month) {
+        ObservableList<Appointment> apptListByMonthAndType = FXCollections.observableArrayList();
+
+        try{
+
+            String sql = "SELECT COUNT(Appointment_ID), Type FROM appointments WHERE MONTH(Start) = ? GROUP BY Type";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, month);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int appointmentId = resultSet.getInt("COUNT(Appointment_ID)");
+                String type = resultSet.getString("Type");
+
+                Appointment appointment = new Appointment(appointmentId, type);
+                apptListByMonthAndType.add(appointment);
+
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptListByMonthAndType;
+    }
+
     /** This method creates a new appointment and adds it to the database.
      * @param title The appointment title
      * @param desc The appointment description
