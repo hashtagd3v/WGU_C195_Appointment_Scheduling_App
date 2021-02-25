@@ -19,11 +19,14 @@ public class SelectReportsController {
     Parent scene;
 
     /** This method takes user to a screen where user is able to sort
-     * appointments by month or type.
+     * appointments by month and type.
      * @param actionEvent the event or mouse click on Sort Customer Appointments button.*/
-    public void onActionSortCustomerApptBtn(ActionEvent actionEvent) {
+    public void onActionSortCustomerApptBtn(ActionEvent actionEvent) throws IOException {
 
-
+        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerApptCount.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
 
     }
 

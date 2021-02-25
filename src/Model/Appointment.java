@@ -31,6 +31,11 @@ public class Appointment {
         this.contactName = contactName;
     }
 
+    public Appointment(int appointmentId, String type) {
+        this.appointmentId = appointmentId;
+        this.type = type;
+    }
+
     /** @return Returns the appointment ID.*/
     public int getAppointmentId() {
         return appointmentId;
