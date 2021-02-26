@@ -117,6 +117,13 @@ public class DBCustomer {
 
         try{
 
+            //Delete related appointment first:
+            String sqlForAppt = "DELETE FROM appointments WHERE Customer_ID = ?";
+            PreparedStatement preparedStatementAppt = DBConnection.getConnection().prepareStatement(sqlForAppt);
+            preparedStatementAppt.setInt(1, customerId);
+            preparedStatementAppt.execute();
+
+            //Delete Customer after deleting appointment:
             String sql = "DELETE FROM customers WHERE Customer_ID = ?";
 
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
