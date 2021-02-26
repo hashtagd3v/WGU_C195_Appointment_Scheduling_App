@@ -48,7 +48,7 @@ public class CustomerApptCount implements Initializable {
     public void onActionBackBtn(ActionEvent actionEvent) throws IOException {
 
         stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
+        scene = FXMLLoader.load(getClass().getResource("/View_Controller/SelectReports.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
 
