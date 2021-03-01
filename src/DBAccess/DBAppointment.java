@@ -220,45 +220,60 @@ public class DBAppointment {
     }
 
     /** This method filters appointment by selected contact only.
+     * This lambda filters out appointment by contact Id.
      * @param id the Contact_ID of the selected contact.
      * @return Returns a list of appointments for selected contact.*/
     public static ObservableList<Appointment> getApptsByContact(int id) {
-        ObservableList<Appointment> apptListByContact = FXCollections.observableArrayList();
 
-        try {
+        ObservableList<Appointment> allList = getAllAppointments();
+        ObservableList<Appointment> contactList = allList.filtered(a -> {
 
-            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
-                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND contacts.Contact_ID = ?";
-
-            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-
-                int appointmentId = resultSet.getInt("Appointment_ID");
-                String title = resultSet.getString("Title");
-                String desc = resultSet.getString("Description");
-                String location = resultSet.getString("Location");
-                String type = resultSet.getString("Type");
-                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
-                LocalDateTime end = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
-                int customerId = resultSet.getInt("Customer_ID");
-                int userId = resultSet.getInt("User_ID");
-                int contactId = resultSet.getInt("Contact_ID");
-                String contactName = resultSet.getString("Contact_Name");
-
-                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
-                apptListByContact.add(appointment);
-
+            if (a.getContactId() == id) {
+                return true;
             }
 
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+            return false;
 
-        return apptListByContact;
+        });
+
+        return contactList;
+
+//        ObservableList<Appointment> apptListByContact = FXCollections.observableArrayList();
+//
+//        try {
+//
+//            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
+//                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID AND contacts.Contact_ID = ?";
+//
+//            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+//            preparedStatement.setInt(1, id);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//
+//            while (resultSet.next()) {
+//
+//                int appointmentId = resultSet.getInt("Appointment_ID");
+//                String title = resultSet.getString("Title");
+//                String desc = resultSet.getString("Description");
+//                String location = resultSet.getString("Location");
+//                String type = resultSet.getString("Type");
+//                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
+//                LocalDateTime end = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+//                int customerId = resultSet.getInt("Customer_ID");
+//                int userId = resultSet.getInt("User_ID");
+//                int contactId = resultSet.getInt("Contact_ID");
+//                String contactName = resultSet.getString("Contact_Name");
+//
+//                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customerId, userId, contactId, contactName);
+//                apptListByContact.add(appointment);
+//
+//            }
+//
+//        }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return apptListByContact;
     }
 
     /** This method allows user to run report for number of customer appointments by month and type.
@@ -290,6 +305,45 @@ public class DBAppointment {
         }
 
         return apptListByMonthAndType;
+    }
+
+    /** This method filters appointment within 15 minutes of log in time.
+     * This lambda method filters appointment within 15 minutes of log in time
+     * by a specific user.
+     * @param userId the user Id.
+     * @return Returns appointment within 15 minutes.*/
+    public static ObservableList<Appointment> getApptWithinFifteenMins(int userId) {
+        ObservableList<Appointment> allList = getAllAppointments();
+
+        //Get today's date:
+        LocalDate today = LocalDate.now();
+
+        //Set midnight time:
+        LocalTime now = LocalTime.now();
+
+        //Set fifteen minutes from now time:
+        LocalTime fifteenMins = LocalTime.now().plusMinutes(15);
+
+        //Set LocalDateTime and Timestamp for start date/time range -- today, now:
+        LocalDateTime todayNow = LocalDateTime.of(today, now);
+
+        //Set LocalDateTime and Timestamp for end date/time range -- today + 15 mins:
+        LocalDateTime todayPlusFifteen = LocalDateTime.of(today, fifteenMins);
+
+        ObservableList<Appointment> fifteenMinList = allList.filtered(appointment -> {
+
+            if (appointment.getUserId() == userId && ((appointment.getStart().isEqual(todayNow) || appointment.getStart().isAfter(todayNow)) && appointment.getStart().isBefore(todayPlusFifteen)) ){
+
+                return true;
+
+            }
+
+            return false;
+
+        });
+
+        return fifteenMinList;
+
     }
 
     /** This method creates a new appointment and adds it to the database.

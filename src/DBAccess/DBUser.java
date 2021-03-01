@@ -121,4 +121,38 @@ public class DBUser {
 
     }
 
+    /** This method allows user to search user database for a matching user.
+     * @param userName the username
+     * @param password the password
+     * @return Returns matched Object User with username and password input.*/
+    public static ObservableList<User> getUserObjectMatchID(String userName, String password) {
+        ObservableList<User> idMatchList = FXCollections.observableArrayList();
+
+        try{
+
+            String sql = "SELECT User_ID, User_Name, Password FROM users WHERE User_Name = ? AND Password = ?";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, userName);;
+            preparedStatement.setString(2, password);;
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int userId  = resultSet.getInt("User_ID");
+                String user_name = resultSet.getString("User_Name");
+                String passWord = resultSet.getString("Password");
+
+                User user = new User(userId, user_name, passWord);
+                idMatchList.add(user);
+
+            }
+
+        }
+         catch (SQLException e) {
+            e.printStackTrace();
+         }
+
+        return idMatchList;
+    }
+
 }

@@ -1,11 +1,13 @@
 package View_Controller;
 
+import DBAccess.DBAppointment;
 import DBAccess.DBUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,6 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -31,6 +36,7 @@ public class LogInController implements Initializable {
     public Label userIdLbl;
     public Label passwordLbl;
     public Button logInBtnLbl;
+    public Label titleLbl;
 
     Stage stage;
     Parent scene;
@@ -55,6 +61,7 @@ public class LogInController implements Initializable {
             logInBtnLbl.setText(rb.getString("logIn"));
             userIdText.setPromptText(rb.getString("typeId"));
             passwordText.setPromptText(rb.getString("typePassword"));
+            titleLbl.setText(rb.getString("title"));
         }
 
     }
@@ -66,20 +73,61 @@ public class LogInController implements Initializable {
      * @param actionEvent the event or mouse click on Log In button.*/
     public void onActionLogIn(ActionEvent actionEvent) throws IOException {
 
-        //FIXME: password has to match exactly before letting user log in!!!
-
         //Get string input from text fields:
-        String userId = userIdText.getText();
+        String userName = userIdText.getText();
         String password = passwordText.getText();
 
         //Determine if SQL query has matched username and password from user input:
-        if (DBUser.getUserMatch(userId, password) == 0) {
+        if (DBUser.getUserMatch(userName, password) == 0) {
+
             return;
+
         } else {
+
+            //TODO: WRITING FILE .TXT
+
+            if (DBUser.getUserObjectMatchID(userName, password). size() == 1) {
+
+                //Get userId of user logging in:
+                int userId = DBUser.getUserObjectMatchID(userName, password).get(0).getUserId();
+
+                if (DBAppointment.getApptWithinFifteenMins(userId).isEmpty()) {
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("No appointment.");
+                    alert.setHeaderText(null);
+                    alert.setContentText("No upcoming appointment for you.");
+
+                    alert.showAndWait();
+
+                } else {
+
+                    //There is a matching appointment within 15 mins here:
+                    //Get the matching appointment's ID, date and time to display on alert box:
+                    int apptId = DBAppointment.getApptWithinFifteenMins(userId).get(0).getAppointmentId();
+
+                    LocalDateTime start = DBAppointment.getApptWithinFifteenMins(userId).get(0).getStart();
+
+                    LocalDate startDate = start.toLocalDate();
+                    LocalTime startTime = start.toLocalTime();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("You have an upcoming appointment!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Appointment ID is " + apptId + "." + "\n" + "Start Date is " + startDate + " and Start Time is: " + startTime + ".");
+
+                    alert.showAndWait();
+
+                }
+
+
+            }
+
             stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/View_Controller/Welcome.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
+
         }
 
     }
