@@ -125,7 +125,7 @@ public class DBUser {
      * @param userName the username
      * @param password the password
      * @return Returns matched Object User with username and password input.*/
-    public static ObservableList<User> getUserObjectMatchID(String userName, String password) {
+    public static ObservableList<User> getUserObjectMatch(String userName, String password) {
         ObservableList<User> idMatchList = FXCollections.observableArrayList();
 
         try{

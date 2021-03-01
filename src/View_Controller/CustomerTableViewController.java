@@ -7,14 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCustomer.getAllCustomers;
@@ -108,10 +107,26 @@ public class CustomerTableViewController implements Initializable {
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
         int customerId = selectedCustomer.getCustomerId();
 
-        DBCustomer.deleteCustomer(customerId);
+        //Deletion confirmation box:
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting A Customer");
+        alert.setHeaderText("You are about to delete a customer including all appointments associated" +
+                " with this customer.");
+        alert.setContentText("Are you sure you want to proceed?");
 
-        //Update customer table view info after deleting selected customer:
-        customerTableView.setItems(getAllCustomers());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+
+            DBCustomer.deleteCustomer(customerId);
+
+            //Update customer table view info after deleting selected customer:
+            customerTableView.setItems(getAllCustomers());
+
+        } else {
+
+            return;
+
+        }
 
     }
 

@@ -102,11 +102,11 @@ public class LogInController implements Initializable {
 
         } else {
 
-
-            if (DBUser.getUserObjectMatchID(userName, password). size() == 1) {
+            //Check if user has an upcoming appointment within 15 minutes of logging in:
+            if (DBUser.getUserObjectMatch(userName, password). size() == 1) {
 
                 //Get userId of user logging in:
-                int userId = DBUser.getUserObjectMatchID(userName, password).get(0).getUserId();
+                int userId = DBUser.getUserObjectMatch(userName, password).get(0).getUserId();
 
                 if (DBAppointment.getApptWithinFifteenMins(userId).isEmpty()) {
 
@@ -119,7 +119,7 @@ public class LogInController implements Initializable {
 
                 } else {
 
-                    //There is a matching appointment within 15 mins here:
+                    //There is a matching appointment within 15 mins here.
                     //Get the matching appointment's ID, date and time to display on alert box:
                     int apptId = DBAppointment.getApptWithinFifteenMins(userId).get(0).getAppointmentId();
 

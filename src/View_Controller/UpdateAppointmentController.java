@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /** This class enables user to edit/update information for appointment that was selected from
@@ -43,6 +44,7 @@ public class UpdateAppointmentController implements Initializable {
     Stage stage;
     Parent scene;
     private int apptId;
+    private String apptType;
     private final LocalTime absoluteStart = LocalTime.of(8, 0);
     private final LocalTime absoluteEnd = LocalTime.of(22, 0);
 
@@ -83,6 +85,7 @@ public class UpdateAppointmentController implements Initializable {
     public void getAppt(Appointment appointment) {
 
         apptId = appointment.getAppointmentId(); // Auto generated
+        apptType = appointment.getType();
 
         //Get LocalDateTime for start and end date/times of the appointment:
         LocalDateTime start = appointment.getStart();
@@ -109,7 +112,7 @@ public class UpdateAppointmentController implements Initializable {
             }
         }
 
-        updateApptTypeText.setText(appointment.getType());
+        updateApptTypeText.setText(apptType);
         updateApptTitleText.setText(appointment.getTitle());
         updateApptDescriptionText.setText(appointment.getDesc());
         updateApptLocationText.setText(appointment.getLocation());
@@ -146,12 +149,35 @@ public class UpdateAppointmentController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionUpdateApptDeleteBtn(ActionEvent actionEvent) throws IOException {
 
-        DBAppointment.deleteAppt(apptId);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting A Customer");
+        alert.setHeaderText("You are about to delete an appointment.");
+        alert.setContentText("Are you sure you want to proceed?");
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+
+            DBAppointment.deleteAppt(apptId);
+
+            //Show delete confirmation on GUI with id and type of appointment:
+            Alert alertDeleteConfirmation = new Alert(Alert.AlertType.INFORMATION);
+            alertDeleteConfirmation.setTitle("Appointment Deleted");
+            alertDeleteConfirmation.setHeaderText(null);
+            alertDeleteConfirmation.setContentText("Appointment has been deleted. \n" + "Appointment ID:" +
+                    " " + apptId + ".\n" + "Appointment Type: " + apptType + ".");
+
+            alertDeleteConfirmation.showAndWait();
+
+            stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        } else {
+
+            return;
+
+        }
 
     }
 
@@ -234,5 +260,7 @@ public class UpdateAppointmentController implements Initializable {
         stage.show();
 
     }
+
+    //TODO: If not all fields are filled out, show an alert and return.
 
 }
