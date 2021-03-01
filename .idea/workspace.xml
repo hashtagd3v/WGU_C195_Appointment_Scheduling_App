@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented deleting appointments related to a customer that will be deleted prior to deleting customer.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature.">
+      <change afterPath="$PROJECT_DIR$/login_activity.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBCustomer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBCustomer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Trans_fr.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBAccess/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Trans.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trans.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Trans_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trans_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Trans_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trans_fr.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/LogInScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/LogInScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Delete_appt_when_deleting_customer" />
+        <entry key="$PROJECT_DIR$" value="Lamba_Expressions" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -187,7 +184,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195/C195PrintWriterExample" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -293,13 +290,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00017" summary="Added event handlers for WelcomeController.java. Also added javadoc comments for class &amp; methods in this class.">
-      <created>1609997463502</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1609997463502</updated>
     </task>
     <task id="LOCAL-00018" summary="Added event handlers for AddCustomerController.java&#10;Also added javadoc comments for class &amp; methods in this class.">
       <created>1609997984483</created>
@@ -637,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614313122260</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature.">
+      <created>1614549917311</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1614549917311</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -696,7 +693,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added javadoc comments for new methods for this branch." />
     <MESSAGE value="Created Appointment.java class." />
     <MESSAGE value="Implemented default combo box list of selections for customers, contacts and user for Add Appointment screen.&#10;Implemented viewing of all appointments from the database for Appointment table view list." />
     <MESSAGE value="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens." />
@@ -721,7 +717,8 @@
     <MESSAGE value="Setting up for new report feature: show number of customer appointments by month and type." />
     <MESSAGE value="Implemented generating customer appointment count report by month and type." />
     <MESSAGE value="Implemented deleting appointments related to a customer that will be deleted prior to deleting customer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented deleting appointments related to a customer that will be deleted prior to deleting customer." />
+    <MESSAGE value="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
