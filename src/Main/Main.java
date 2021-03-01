@@ -7,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.DBConnection;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 /** This is an appointment scheduling app.*/
 public class Main extends Application {
 
@@ -30,7 +27,7 @@ public class Main extends Application {
      * */
     public static void main(String[] args) {
 
-        //FIXME: Set default locale to FR/Erase this code snippet prior to submitting:
+//        Used this code to test default language setting to French:
 //        Locale.setDefault(new Locale("fr"));
 
         DBConnection.startConnection();

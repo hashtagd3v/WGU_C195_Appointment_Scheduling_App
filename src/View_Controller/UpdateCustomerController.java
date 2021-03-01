@@ -9,13 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBCountry.getAllCountry;
@@ -91,13 +90,29 @@ public class UpdateCustomerController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionUpdateCustomerDeleteBtn(ActionEvent actionEvent) throws IOException {
 
-        //Delete customer selected from table view:
-        DBCustomer.deleteCustomer(customerId);
+        //Deletion confirmation alert box:
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting A Customer");
+        alert.setHeaderText("You are about to delete a customer including all appointments associated" +
+                " with this customer.");
+        alert.setContentText("Are you sure you want to proceed?");
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+
+            //Delete customer selected from table view:
+            DBCustomer.deleteCustomer(customerId);
+
+            stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        } else {
+
+            return;
+
+        }
 
     }
 

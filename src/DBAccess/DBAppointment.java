@@ -220,7 +220,7 @@ public class DBAppointment {
     }
 
     /** This method filters appointment by selected contact only.
-     * This lambda filters out appointment by contact Id.
+     * This Lambda Expression filters out appointment by contact Id.
      * @param id the Contact_ID of the selected contact.
      * @return Returns a list of appointments for selected contact.*/
     public static ObservableList<Appointment> getApptsByContact(int id) {
@@ -238,6 +238,8 @@ public class DBAppointment {
 
         return contactList;
 
+//        Showing previous code used before changing method to a lambda expression:
+//
 //        ObservableList<Appointment> apptListByContact = FXCollections.observableArrayList();
 //
 //        try {
@@ -308,7 +310,7 @@ public class DBAppointment {
     }
 
     /** This method filters appointment within 15 minutes of log in time.
-     * This lambda method filters appointment within 15 minutes of log in time
+     * This Lambda Expression filters appointment within 15 minutes of log in time
      * by a specific user.
      * @param userId the user Id.
      * @return Returns appointment within 15 minutes.*/

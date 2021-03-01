@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static DBAccess.DBAppointment.getAllAppointments;
@@ -147,11 +148,36 @@ public class ApptTableViewController implements Initializable {
 
         Appointment selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
         int apptId = selectedAppt.getAppointmentId();
+        String apptType = selectedAppt.getType();
 
-        DBAppointment.deleteAppt(apptId);
+        //Deleting appointment alert confirmation box:
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting A Customer");
+        alert.setHeaderText("You are about to delete an appointment.");
+        alert.setContentText("Are you sure you want to proceed?");
 
-        //Update appointment table view info after deleting appointment:
-        apptTableView.setItems(DBAppointment.getAllAppointments());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+
+            DBAppointment.deleteAppt(apptId);
+
+            //Update appointment table view info after deleting appointment:
+            apptTableView.setItems(DBAppointment.getAllAppointments());
+
+            //Show delete confirmation on GUI with id and type of appointment:
+            Alert alertDeleteConfirmation = new Alert(Alert.AlertType.INFORMATION);
+            alertDeleteConfirmation.setTitle("Appointment Deleted");
+            alertDeleteConfirmation.setHeaderText(null);
+            alertDeleteConfirmation.setContentText("Appointment has been deleted. \n" + "Appointment ID:" +
+                    " " + apptId + ".\n" + "Appointment Type: " + apptType + ".");
+
+            alertDeleteConfirmation.showAndWait();
+
+        } else {
+
+            return;
+
+        }
 
     }
 
@@ -165,5 +191,7 @@ public class ApptTableViewController implements Initializable {
         stage.show();
 
     }
+
+    //TODO: If not all fields are filled out, show an alert and return.
 
 }
