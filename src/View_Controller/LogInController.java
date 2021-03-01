@@ -13,7 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -77,14 +79,29 @@ public class LogInController implements Initializable {
         String userName = userIdText.getText();
         String password = passwordText.getText();
 
+        //Get date and time now:
+        LocalDate now = LocalDate.now();
+        LocalTime timeNow = LocalTime.now();
+
+        String filename = "login_activity.txt";
+
+        FileWriter fileWriter = new FileWriter(filename, true);
+
+        PrintWriter outputFile = new PrintWriter(fileWriter);
+
         //Determine if SQL query has matched username and password from user input:
         if (DBUser.getUserMatch(userName, password) == 0) {
+
+            //Append login_activity.txt with failed log in:
+            outputFile.append(userName + " has failed logging in on " + now
+            + " " + timeNow + ".\n");
+
+            outputFile.close();
 
             return;
 
         } else {
 
-            //TODO: WRITING FILE .TXT
 
             if (DBUser.getUserObjectMatchID(userName, password). size() == 1) {
 
@@ -122,6 +139,12 @@ public class LogInController implements Initializable {
 
 
             }
+
+            //Append login_activity.txt with successful log in:
+            outputFile.append(userName + " has successfully logged in on " + now
+                    + " " + timeNow + ".\n");
+
+            outputFile.close();
 
             stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/View_Controller/Welcome.fxml"));
