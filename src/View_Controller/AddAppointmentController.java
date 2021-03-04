@@ -4,9 +4,11 @@ import DBAccess.DBAppointment;
 import DBAccess.DBContact;
 import DBAccess.DBCustomer;
 import DBAccess.DBUser;
+import Model.Appointment;
 import Model.Contact;
 import Model.Customer;
 import Model.User;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,6 +45,9 @@ public class AddAppointmentController implements Initializable {
     Parent scene;
     private final LocalTime absoluteStart = LocalTime.of(8, 0);
     private final LocalTime absoluteEnd = LocalTime.of(22, 0);
+    private int customerIdCombo;
+    private LocalDateTime startLDT;
+    private LocalDateTime endLDT;
 
     /** This method initializes add appointment screen combo boxes with a list of selection.
      * @param url the location
@@ -97,7 +102,7 @@ public class AddAppointmentController implements Initializable {
 
         Customer customer = addApptCustomerIDCombo.getSelectionModel().getSelectedItem();
         //Obtain int customerId based on combo box selection:
-        int customerIdCombo = customer.getCustomerId();
+        customerIdCombo = customer.getCustomerId();
 
         User user = addApptUserIDCombo.getSelectionModel().getSelectedItem();
         //Obtain int userId based on combo box selection:
@@ -122,8 +127,8 @@ public class AddAppointmentController implements Initializable {
         LocalTime endApptTime = addApptEndTimeCombo.getValue();
 
         //Combine local date and local time to create local datetime:
-        LocalDateTime startLDT = LocalDateTime.of(datePicker, startApptTime);
-        LocalDateTime endLDT = LocalDateTime.of(datePicker, endApptTime);
+        startLDT = LocalDateTime.of(datePicker, startApptTime);
+        endLDT = LocalDateTime.of(datePicker, endApptTime);
 
         //Use system default zone Id:
         ZoneId myZoneId = ZoneId.systemDefault();
@@ -165,12 +170,75 @@ public class AddAppointmentController implements Initializable {
             return;
         }
 
-        DBAppointment.createAppt(title, desc, location, type, startLDT, endLDT, customerIdCombo, userIdCombo, contactIdCombo);
+        //Check if there is a previously scheduled appointment for customer that will overlap with new appt:
+        if (matchCustomerAppt() == true) {
 
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Scheduling Appointment.");
+            alert.setHeaderText("Time will overlap with another appointment for this customer.");
+            alert.setContentText("Please select another appointment dates and/or time.");
+
+            alert.showAndWait();
+
+            return;
+
+        } else {
+
+            DBAppointment.createAppt(title, desc, location, type, startLDT, endLDT, customerIdCombo, userIdCombo, contactIdCombo);
+
+            stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/ApptTableView.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        }
+
+    }
+
+    /** This method determines if customer has an overlapping appointment that is
+     * previously scheduled.
+     * @return Returns match that contains a boolean value. True if there is an overlapping appointment.
+     * False if there is none.*/
+    private boolean matchCustomerAppt() {
+        ObservableList<Appointment> apptMatches = DBAppointment.getApptByCustomer(customerIdCombo);
+
+        boolean match = false;
+
+        for (int i = 0; i < apptMatches.size(); i++) {
+
+            Appointment appt = apptMatches.get(i);
+            LocalDateTime startAppt = appt.getStart();
+            LocalDateTime endAppt = appt.getEnd();                  //FIXME: Bug scheduling overlap.
+
+            if ( startLDT.isAfter(startAppt.minusMinutes(1)) && startLDT.isBefore(endAppt.plusMinutes(1)) )  {
+
+                match = true;
+
+                break;
+
+            } else if ( endLDT.isAfter(startAppt.minusMinutes(1)) && endLDT.isBefore(endAppt.plusMinutes(1)) ) {
+
+                match = true;
+
+                break;
+
+            } else if ( startLDT.isBefore(startAppt.plusMinutes(1)) && endLDT.isAfter(endAppt.minusMinutes(1))) {
+
+                match = true;
+
+                break;
+
+            } else {
+
+                match = false;
+
+                continue;
+
+            }
+        }
+
+        System.out.println(match);
+        return match;
 
     }
 

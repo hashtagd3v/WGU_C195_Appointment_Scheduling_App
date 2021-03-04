@@ -4,87 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented logging all failed and successful log in attempts of user and save log to login_activity.txt in root folder.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBAppointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBAppointment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBContact.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBContact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBCountry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBCountry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBCustomer.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBCustomer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBFirstLevelDiv.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBFirstLevelDiv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/DBUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/DBUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/DBAccess/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/DBAccess/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Main/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Main/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Main/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Main/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Main/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Main/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/Appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/Appointment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/Contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/Contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/Country.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/Customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/Customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/FirstLevelDivision.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/FirstLevelDivision.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/User.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Model/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Model/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/AddAppointmentController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/AddAppointmentController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/AddCustomerController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/AddCustomerController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/ApptTableViewController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/ApptTableViewController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/ApptsTodayController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/ApptsTodayController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/ContactScheduleController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/ContactScheduleController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/CustomerApptCount.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/CustomerApptCount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/CustomerTableViewController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/CustomerTableViewController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/LogInController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/LogInController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/SelectReportsController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/SelectReportsController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/UpdateAppointmentController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/UpdateAppointmentController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/UpdateCustomerController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/UpdateCustomerController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/WelcomeController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/WelcomeController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Controller/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allclasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/member-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/member-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/package-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/package-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/type-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/type-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/DBConnection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/DBConnection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/DBQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/DBQuery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login_activity.txt" beforeDir="false" afterPath="$PROJECT_DIR$/login_activity.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBAppointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/DBAccess/DBUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/Main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/CustomerTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/CustomerTableViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/ApptTableViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateCustomerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBAccess/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBAccess/DBUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/CustomerTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/CustomerTableViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateCustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +86,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="File_writer_and_Print_writer" />
+        <entry key="$PROJECT_DIR$" value="Creating_Alerts" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -359,13 +289,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00019" summary="Added event handlers for UpdateCustomerController.java&#10;Also added javadoc comments for class &amp; methods in this class.">
-      <created>1609998371894</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1609998371894</updated>
     </task>
     <task id="LOCAL-00020" summary="Added event handlers for buttons only ApptTableViewController.java&#10;Also added javadoc comments for class &amp; methods in this class.">
       <created>1609999229808</created>
@@ -703,7 +626,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614557309882</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted.">
+      <created>1614564914916</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1614564914916</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -762,7 +692,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Implemented default combo box list of selections for customers, contacts and user for Add Appointment screen.&#10;Implemented viewing of all appointments from the database for Appointment table view list." />
     <MESSAGE value="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens." />
     <MESSAGE value="Implemented Appointment table view list filter by current month in Appointment Table View screen." />
     <MESSAGE value="Implemented Appointment table view list filter ALL in Appointment Table View screen." />
@@ -787,7 +716,8 @@
     <MESSAGE value="Implemented deleting appointments related to a customer that will be deleted prior to deleting customer." />
     <MESSAGE value="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature." />
     <MESSAGE value="Implemented logging all failed and successful log in attempts of user and save log to login_activity.txt in root folder." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented logging all failed and successful log in attempts of user and save log to login_activity.txt in root folder." />
+    <MESSAGE value="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
