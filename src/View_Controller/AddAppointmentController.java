@@ -100,6 +100,11 @@ public class AddAppointmentController implements Initializable {
      * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddApptBtn(ActionEvent actionEvent) throws IOException {
 
+        //Check for missing fields:
+        if (blankField() == true) {
+            return;
+        }
+
         Customer customer = addApptCustomerIDCombo.getSelectionModel().getSelectedItem();
         //Obtain int customerId based on combo box selection:
         customerIdCombo = customer.getCustomerId();
@@ -208,7 +213,7 @@ public class AddAppointmentController implements Initializable {
 
             Appointment appt = apptMatches.get(i);
             LocalDateTime startAppt = appt.getStart();
-            LocalDateTime endAppt = appt.getEnd();                  //FIXME: Bug scheduling overlap.
+            LocalDateTime endAppt = appt.getEnd();
 
             if ( startLDT.isAfter(startAppt.minusMinutes(1)) && startLDT.isBefore(endAppt.plusMinutes(1)) )  {
 
@@ -237,9 +242,50 @@ public class AddAppointmentController implements Initializable {
             }
         }
 
-        System.out.println(match);
         return match;
 
     }
+
+    /** This method checks all fields if they are empty/null.
+     * @return Returns blankField that contains a boolean value.
+     * True if a field is empty and false if all fields are filled.*/
+    private boolean blankField() {
+
+        boolean blankField = false;
+
+        if (
+                addApptCustomerIDCombo.getValue() == null    ||
+                addApptUserIDCombo.getValue() == null        ||
+                addApptTypeText.getText().isEmpty()          ||
+                addApptTitleText.getText().isEmpty()         ||
+                addApptDescriptionText.getText().isEmpty()   ||
+                addApptLocationText.getText().isEmpty()      ||
+                addApptContactCombo.getItems().isEmpty()     ||
+                addApptDatePicker.getValue() == null         ||
+                addApptStartTimeCombo.getValue() == null     ||
+                addApptEndTimeCombo.getValue() == null
+
+        ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Missing or blank fields.");
+            alert.setContentText("Please fill out all fields.");
+
+            alert.showAndWait();
+
+            blankField = true;
+
+        } else {
+
+            blankField = false;
+
+        }
+
+        return blankField;
+
+    }
+
+
 
 }
