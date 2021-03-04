@@ -348,6 +348,46 @@ public class DBAppointment {
 
     }
 
+    public static ObservableList<Appointment> getApptByCustomer(int customerId) {
+        ObservableList<Appointment> apptCustomerList = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT Appointment_ID, Title, Description, Location, contacts.Contact_ID, contacts.Contact_Name, Type, Start, End, customers.Customer_ID, User_ID " +
+                    "FROM appointments, contacts, customers WHERE appointments.Contact_ID=contacts.Contact_ID AND appointments.Customer_ID=customers.Customer_ID " +
+                    "AND customers.Customer_ID = ?";
+
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, customerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int appointmentId = resultSet.getInt("Appointment_ID");
+                String title = resultSet.getString("Title");
+                String desc = resultSet.getString("Description");
+                String location = resultSet.getString("Location");
+                String type = resultSet.getString("Type");
+                LocalDateTime start = resultSet.getTimestamp("Start").toLocalDateTime();    //UTC
+                LocalDateTime end = resultSet.getTimestamp("End").toLocalDateTime();       //UTC
+                int customer_id = resultSet.getInt("Customer_ID");
+                int userId = resultSet.getInt("User_ID");
+                int contactId = resultSet.getInt("Contact_ID");
+                String contactName = resultSet.getString("Contact_Name");
+
+                Appointment appointment = new Appointment(appointmentId, title, desc, location, type, start, end, customer_id, userId, contactId, contactName);
+                apptCustomerList.add(appointment);
+
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apptCustomerList;
+    }
+
     /** This method creates a new appointment and adds it to the database.
      * @param title The appointment title
      * @param desc The appointment description
