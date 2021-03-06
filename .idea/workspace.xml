@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implemented alert boxes to prompt user to fill out all missing fields for AddAppointmentController.java and UpdateAppointmentController.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login_activity.txt" beforeDir="false" afterPath="$PROJECT_DIR$/login_activity.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/AddAppointmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WGU Software II Project/View_Controller/UpdateAppointmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/UpdateAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/ApptTableViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Controller/SelectReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Controller/SelectReportsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +177,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195/C195PrintWriterExample" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -285,13 +283,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00020" summary="Added event handlers for buttons only ApptTableViewController.java&#10;Also added javadoc comments for class &amp; methods in this class.">
-      <created>1609999229808</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1609999229808</updated>
     </task>
     <task id="LOCAL-00021" summary="Added event handlers for buttons only AddAppointmentController.java&#10;Also added javadoc comments for class &amp; methods in this class. Fixed UI for Add appointment screen: converted text fields for Customer &amp; User ID, and appt type to combo boxes; deleted end date picker.">
       <created>1610000330345</created>
@@ -629,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614564914916</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Implemented alert boxes to prompt user to fill out all missing fields for AddAppointmentController.java and UpdateAppointmentController.java">
+      <created>1614834966414</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1614834966414</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -688,7 +686,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Refactored DBFirstLevelDiv.java. Reduced methods from three to one for filtering first level divisions based on country selection from combo boxes in Add and Update Customer screens." />
     <MESSAGE value="Implemented Appointment table view list filter by current month in Appointment Table View screen." />
     <MESSAGE value="Implemented Appointment table view list filter ALL in Appointment Table View screen." />
     <MESSAGE value="Started implementing features on adding appointment screen except time slices for combo box start and end times." />
@@ -713,7 +710,8 @@
     <MESSAGE value="Implemented upcoming appointment within 15 minute alerts for user logging in which also shows Appt ID, date in time in alert box. Utilized lambda expressions (filtered) for two DB access queries within DBAppointment.java that is called to execute feature." />
     <MESSAGE value="Implemented logging all failed and successful log in attempts of user and save log to login_activity.txt in root folder." />
     <MESSAGE value="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented alert boxes for confirmation when deleting appointments and customers. Displays appt id and type confirmation box once appt is deleted." />
+    <MESSAGE value="Implemented alert boxes to prompt user to fill out all missing fields for AddAppointmentController.java and UpdateAppointmentController.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented alert boxes to prompt user to fill out all missing fields for AddAppointmentController.java and UpdateAppointmentController.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
