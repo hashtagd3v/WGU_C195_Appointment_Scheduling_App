@@ -71,7 +71,7 @@
             </ComboBox>
          </children>
       </HBox>
-      <HBox layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="20.0">
+      <HBox layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" spacing="25.0">
          <children>
             <Label text="Country:">
                <HBox.margin>
