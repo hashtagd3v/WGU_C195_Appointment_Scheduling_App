@@ -269,6 +269,13 @@ public class UpdateAppointmentController implements Initializable {
 
         } else {
 
+            //Check for missing fields:
+            if (blankField() == true) {
+
+                return;
+
+            }
+
             //Update appointment in database:
             DBAppointment.updateAppt(apptId, title, desc, location, type, startLDT, endLDT, customerId, userId, contactId);
 
@@ -294,7 +301,7 @@ public class UpdateAppointmentController implements Initializable {
 
             Appointment appt = apptMatches.get(i);
             LocalDateTime startAppt = appt.getStart();
-            LocalDateTime endAppt = appt.getEnd();                  //FIXME: Bug scheduling overlap.
+            LocalDateTime endAppt = appt.getEnd();
 
             if ( startLDT.isAfter(startAppt.minusMinutes(1)) && startLDT.isBefore(endAppt.plusMinutes(1)) )  {
 
@@ -323,11 +330,42 @@ public class UpdateAppointmentController implements Initializable {
             }
         }
 
-        System.out.println(match);
         return match;
 
     }
 
-    //TODO: If not all fields are filled out, show an alert and return.
+    /** This method checks all fields if they are empty/null.
+     * @return Returns blankField that contains a boolean value.
+     * True if a field is empty and false if all fields are filled.*/
+    private boolean blankField() {
+
+        boolean blankField = false;
+
+        if (
+                updateApptLocationText.getText().isEmpty()      ||
+                updateApptTitleText.getText().isEmpty()         ||
+                updateApptDescriptionText.getText().isEmpty()   ||
+                updateApptLocationText.getText().isEmpty()
+
+            ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Missing or blank fields.");
+            alert.setContentText("Please fill out all fields.");
+
+            alert.showAndWait();
+
+            blankField = true;
+
+        } else {
+
+            blankField = false;
+
+        }
+
+        return blankField;
+
+    }
 
 }

@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -68,28 +69,32 @@ public class AddCustomerController implements Initializable {
      * @param actionEvent the event or mouse click on Add button.*/
     public void onActionAddCustomerAddBtn(ActionEvent actionEvent) throws IOException {
 
-        String customerName = addCustomerNameText.getText();
-        String customerAddress = addCustomerAddressText.getText();
-        String postalCode = addCustomerPostalText.getText();
-        String customerPhoneNo = addCustomerPhoneText.getText();
+        //Check if any fields are missing/empty:
+        if (blankField() == true) {
 
-        //Grabs first level division selected from combo box:
-        FirstLevelDivision division = addCustomerFirstLdCombo.getSelectionModel().getSelectedItem();
-        //Grabs ONLY the division ID:
-        int divId = division.getFirstLevelDivId();
-
-        //Combo box selection validation:
-        if (division.getFirstLevelDivName() == null) {
             return;
+
+        } else {
+
+            String customerName = addCustomerNameText.getText();
+            String customerAddress = addCustomerAddressText.getText();
+            String postalCode = addCustomerPostalText.getText();
+            String customerPhoneNo = addCustomerPhoneText.getText();
+
+            //Grabs first level division selected from combo box:
+            FirstLevelDivision division = addCustomerFirstLdCombo.getSelectionModel().getSelectedItem();
+            //Grabs ONLY the division ID:
+            int divId = division.getFirstLevelDivId();
+
+            //Create new customer:
+            DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
+
+            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
         }
-
-        //Create new customer:
-        DBCustomer.createCustomer(customerName, customerAddress, postalCode, customerPhoneNo, divId);
-
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
 
     }
 
@@ -110,6 +115,40 @@ public class AddCustomerController implements Initializable {
 
     }
 
-    //TODO: Add Clear selection and info button.
+    /** This method checks all fields if they are empty/null.
+     * @return Returns blankField that contains a boolean value.
+     * True if a field is empty and false if all fields are filled.*/
+    private boolean blankField() {
+
+        boolean blankField = false;
+
+        if (
+                        addCustomerNameText.getText().isEmpty()      ||
+                        addCustomerAddressText.getText().isEmpty()   ||
+                        addCustomerPhoneText.getText().isEmpty()     ||
+                        addCustomerPostalText.getText().isEmpty()    ||
+                        addCustomerFirstLdCombo.getSelectionModel().isEmpty() ||
+                        addCustomerCountryCombo.getSelectionModel().isEmpty()
+
+        ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Missing or blank fields.");
+            alert.setContentText("Please fill out all fields.");
+
+            alert.showAndWait();
+
+            blankField = true;
+
+        } else {
+
+            blankField = false;
+
+        }
+
+        return blankField;
+
+    }
 
 }

@@ -123,28 +123,32 @@ public class UpdateCustomerController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionUpdateCustomerBtn(ActionEvent actionEvent) throws IOException {
 
-        String customerName = updateNameText.getText();
-        String customerAddress = updateAddressText.getText();
-        String postalCode = updatePostalText.getText();
-        String customerPhoneNo = updatePhoneText.getText();
+        //Check if any fields are missing:
+        if (blankField() == true) {
 
-        //Grabs first level division selected from combo box:
-        FirstLevelDivision division = updateFirstLdCombo.getSelectionModel().getSelectedItem();
-        //Grabs ONLY the division ID:
-        int divId = division.getFirstLevelDivId();
-
-        //Combo box selection validation:
-        if (division.getFirstLevelDivName() == null) {
             return;
+
+        } else {
+
+            String customerName = updateNameText.getText();
+            String customerAddress = updateAddressText.getText();
+            String postalCode = updatePostalText.getText();
+            String customerPhoneNo = updatePhoneText.getText();
+
+            //Grabs first level division selected from combo box:
+            FirstLevelDivision division = updateFirstLdCombo.getSelectionModel().getSelectedItem();
+            //Grabs ONLY the division ID:
+            int divId = division.getFirstLevelDivId();
+
+            //Update database by calling updateCustomer query method in DBCustomer:
+            DBCustomer.updateCustomer(customerId, customerName, customerAddress, postalCode, customerPhoneNo, divId);
+
+            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
         }
-
-        //Update database by calling updateCustomer query method in DBCustomer:
-        DBCustomer.updateCustomer(customerId, customerName, customerAddress, postalCode, customerPhoneNo, divId);
-
-        stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/CustomerTableView.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
 
     }
 
@@ -164,6 +168,40 @@ public class UpdateCustomerController implements Initializable {
 
     }
 
-    //TODO: Add Clear selection and info button.
+    /** This method checks all fields if they are empty/null.
+     * @return Returns blankField that contains a boolean value.
+     * True if a field is empty and false if all fields are filled.*/
+    private boolean blankField() {
+
+        boolean blankField = false;
+
+        if (
+                        updateNameText.getText().isEmpty()      ||
+                        updateAddressText.getText().isEmpty()   ||
+                        updatePhoneText.getText().isEmpty()     ||
+                        updatePostalText.getText().isEmpty()    ||
+                        updateFirstLdCombo.getSelectionModel().isEmpty() ||
+                        updateCountryCombo.getSelectionModel().isEmpty()
+
+        ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Missing or blank fields.");
+            alert.setContentText("Please fill out all fields.");
+
+            alert.showAndWait();
+
+            blankField = true;
+
+        } else {
+
+            blankField = false;
+
+        }
+
+        return blankField;
+
+    }
 
 }

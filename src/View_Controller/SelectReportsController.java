@@ -65,10 +65,6 @@ public class SelectReportsController {
 
     }
 
-    //TODO: Create login_activity.txt. Track user activity by recording all user log-in attempts, dates,
-    // and time stamps and whether each attempt was successful in a file named login_activity.txt.
-    // Append each new record to the existing file, and save to the root folder of the application.
-
     /** This method button enables user to go back to previous screen: Appointment Table View.
      * @param actionEvent the event or mouse click on Back button.*/
     public void onActionBackBtn(ActionEvent actionEvent) throws IOException {

@@ -84,6 +84,19 @@ public class CustomerTableViewController implements Initializable {
 
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
 
+        if (selectedCustomer == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No customer selected.");
+            alert.setContentText("Please select a customer to update.");
+
+            alert.showAndWait();
+
+            return;
+
+        }
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/View_Controller/UpdateCustomerScreen.fxml"));
         loader.load();
@@ -105,6 +118,20 @@ public class CustomerTableViewController implements Initializable {
     public void onActionCustomerDeleteBtn(ActionEvent actionEvent) {
 
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+
+        if (selectedCustomer == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No customer selected.");
+            alert.setContentText("Please select a customer to delete.");
+
+            alert.showAndWait();
+
+            return;
+
+        }
+
         int customerId = selectedCustomer.getCustomerId();
 
         //Deletion confirmation box:

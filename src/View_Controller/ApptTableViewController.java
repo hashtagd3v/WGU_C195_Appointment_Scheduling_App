@@ -39,6 +39,7 @@ public class ApptTableViewController implements Initializable {
 
     Stage stage;
     Parent scene;
+    private Appointment selectedAppt;
 
     /** This method initialized appointment table view screen with list of appointments.
      * @param url the location
@@ -126,19 +127,34 @@ public class ApptTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Update button.*/
     public void onActionApptUpdateBtn(ActionEvent actionEvent) throws IOException {
 
-        Appointment selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
+        selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/View_Controller/UpdateAppointmentScreen.fxml"));
-        loader.load();
+        if (selectedAppt == null) {
 
-        UpdateAppointmentController MODController = loader.getController();
-        MODController.getAppt(selectedAppt);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No appointment selected.");
+            alert.setContentText("Please select an appointment to update.");
 
-        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Parent scene = loader.getRoot();
-        stage.setScene(new Scene(scene));
-        stage.show();
+            alert.showAndWait();
+
+            return;
+
+        } else {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View_Controller/UpdateAppointmentScreen.fxml"));
+            loader.load();
+
+            UpdateAppointmentController MODController = loader.getController();
+            MODController.getAppt(selectedAppt);
+
+            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            Parent scene = loader.getRoot();
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        }
 
     }
 
@@ -146,36 +162,53 @@ public class ApptTableViewController implements Initializable {
      * @param actionEvent the event or mouse click on Delete button.*/
     public void onActionApptDeleteBtn(ActionEvent actionEvent) {
 
-        Appointment selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
-        int apptId = selectedAppt.getAppointmentId();
-        String apptType = selectedAppt.getType();
+        selectedAppt = apptTableView.getSelectionModel().getSelectedItem();
 
-        //Deleting appointment alert confirmation box:
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deleting A Customer");
-        alert.setHeaderText("You are about to delete an appointment.");
-        alert.setContentText("Are you sure you want to proceed?");
+        if (selectedAppt == null) {
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No appointment selected.");
+            alert.setContentText("Please select an appointment to delete.");
 
-            DBAppointment.deleteAppt(apptId);
+            alert.showAndWait();
 
-            //Update appointment table view info after deleting appointment:
-            apptTableView.setItems(DBAppointment.getAllAppointments());
-
-            //Show delete confirmation on GUI with id and type of appointment:
-            Alert alertDeleteConfirmation = new Alert(Alert.AlertType.INFORMATION);
-            alertDeleteConfirmation.setTitle("Appointment Deleted");
-            alertDeleteConfirmation.setHeaderText(null);
-            alertDeleteConfirmation.setContentText("Appointment has been deleted. \n" + "Appointment ID:" +
-                    " " + apptId + ".\n" + "Appointment Type: " + apptType + ".");
-
-            alertDeleteConfirmation.showAndWait();
+            return;
 
         } else {
 
-            return;
+            //Show appt ID and type on alert box:
+            int apptId = selectedAppt.getAppointmentId();
+            String apptType = selectedAppt.getType();
+
+            //Deleting appointment alert confirmation box:
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deleting A Customer");
+            alert.setHeaderText("You are about to delete an appointment.");
+            alert.setContentText("Are you sure you want to proceed?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+
+                DBAppointment.deleteAppt(apptId);
+
+                //Update appointment table view info after deleting appointment:
+                apptTableView.setItems(DBAppointment.getAllAppointments());
+
+                //Show delete confirmation on GUI with id and type of appointment:
+                Alert alertDeleteConfirmation = new Alert(Alert.AlertType.INFORMATION);
+                alertDeleteConfirmation.setTitle("Appointment Deleted");
+                alertDeleteConfirmation.setHeaderText(null);
+                alertDeleteConfirmation.setContentText("Appointment has been deleted. \n" + "Appointment ID:" +
+                        " " + apptId + ".\n" + "Appointment Type: " + apptType + ".");
+
+                alertDeleteConfirmation.showAndWait();
+
+            } else {
+
+                return;
+
+            }
 
         }
 
@@ -191,7 +224,5 @@ public class ApptTableViewController implements Initializable {
         stage.show();
 
     }
-
-    //TODO: If not all fields are filled out, show an alert and return.
 
 }
