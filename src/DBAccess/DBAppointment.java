@@ -276,6 +276,7 @@ public class DBAppointment {
 //        }
 //
 //        return apptListByContact;
+
     }
 
     /** This method allows user to run report for number of customer appointments by month and type.
@@ -334,13 +335,19 @@ public class DBAppointment {
 
         ObservableList<Appointment> fifteenMinList = allList.filtered(appointment -> {
 
-            if (appointment.getUserId() == userId && ((appointment.getStart().isEqual(todayNow) || appointment.getStart().isAfter(todayNow)) && appointment.getStart().isBefore(todayPlusFifteen)) ){
+//          //Check if log in time is overlapping any upcoming appointments or appointments happening within 15 minutes of logging in:
+            if ( appointment.getUserId() == userId &&
+                    ( appointment.getStart().isAfter(todayNow.minusMinutes(1)) && appointment.getStart().isBefore(todayPlusFifteen.plusMinutes(1) ) ) ||
+                    ( appointment.getEnd().isAfter(todayNow.minusMinutes(1)) && appointment.getEnd().isBefore(todayPlusFifteen.plusMinutes(1)) ) ||
+                    ( appointment.getStart().isBefore(todayNow) && appointment.getEnd().isAfter(todayPlusFifteen) ) ) {
 
                 return true;
 
-            }
+            } else {
 
-            return false;
+                return false;
+
+            }
 
         });
 
@@ -348,6 +355,9 @@ public class DBAppointment {
 
     }
 
+    /** This method enables user to get appointments by customer.
+     * @param customerId the customer Id.
+     * @return Returns a list of appointments by customer selected.*/
     public static ObservableList<Appointment> getApptByCustomer(int customerId) {
         ObservableList<Appointment> apptCustomerList = FXCollections.observableArrayList();
 

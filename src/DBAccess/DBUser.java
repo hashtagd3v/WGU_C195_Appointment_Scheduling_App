@@ -132,8 +132,8 @@ public class DBUser {
 
             String sql = "SELECT User_ID, User_Name, Password FROM users WHERE User_Name = ? AND Password = ?";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
-            preparedStatement.setString(1, userName);;
-            preparedStatement.setString(2, password);;
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
