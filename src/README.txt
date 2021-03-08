@@ -1,8 +1,8 @@
 # Appointment Scheduling App
 
-Appointment Scheduling App is an application written in Java that enables a user to log in, add/delete/update a customer
-to the database, add/delete/update an appointment to the database, and run several reports. This app also tracks successful
-and failed user log ins to a text file.
+Appointment Scheduling App is an application written in Java that is connected to a mySql Database and performs CRUD operations.
+This app enables a user to log in, add/delete/update a customer to the database, add/delete/update an appointment to the database,
+and run several reports. This app also tracks successful and failed user log ins to a text file (login_activity.txt).
 
 # Further App Info:
 
