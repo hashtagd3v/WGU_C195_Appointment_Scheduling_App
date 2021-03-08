@@ -36,5 +36,6 @@ delete customers. Select Appointments to go to the list of appointments (also sh
 delete appointments. To run reports, select Appointments on the Welcome screen. Select "Reports" then choose between
 three available reports: Sort Customer Appointments (generates a report for number of appointments by type per month),
 Contact Appointment Schedule (generates a report for listing appointments by contact name), and lastly, Appointments Today
-Report is the third chosen report (generates a report that shows scheduled appointments for current day).
+Report is the third chosen report (generates a convenient report for the user to quickly check scheduled appointments
+for current day).
 
