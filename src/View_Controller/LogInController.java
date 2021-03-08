@@ -103,7 +103,7 @@ public class LogInController implements Initializable {
         } else {
 
             //Check if user has an upcoming appointment within 15 minutes of logging in:
-            if (DBUser.getUserObjectMatch(userName, password). size() == 1) {
+            if (DBUser.getUserObjectMatch(userName, password).size() > 0) {
 
                 //Get userId of user logging in:
                 int userId = DBUser.getUserObjectMatch(userName, password).get(0).getUserId();
@@ -119,24 +119,26 @@ public class LogInController implements Initializable {
 
                 } else {
 
-                    //There is a matching appointment within 15 mins here.
+                    //There is a matching appointment within 15 mins of log in here.
                     //Get the matching appointment's ID, date and time to display on alert box:
                     int apptId = DBAppointment.getApptWithinFifteenMins(userId).get(0).getAppointmentId();
 
                     LocalDateTime start = DBAppointment.getApptWithinFifteenMins(userId).get(0).getStart();
+                    LocalDateTime end = DBAppointment.getApptWithinFifteenMins(userId).get(0).getEnd();
 
                     LocalDate startDate = start.toLocalDate();
                     LocalTime startTime = start.toLocalTime();
+                    LocalTime endTime = end.toLocalTime();
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("You have an upcoming appointment!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Appointment ID is " + apptId + "." + "\n" + "Start Date is " + startDate + " and Start Time is: " + startTime + ".");
+                    alert.setContentText("Appointment ID is " + apptId + "." + "\n" + "Start Date is " + startDate + " and Start Time is: " + startTime +
+                              ".\n" +  "End Time is " + endTime + ".");
 
                     alert.showAndWait();
 
                 }
-
 
             }
 

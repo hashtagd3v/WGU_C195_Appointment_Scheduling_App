@@ -36,6 +36,8 @@ public class DBConnection {
         return connection;
     }
 
+    /** This method gets the connection.
+     * @return Returns connection.*/
     public static Connection getConnection() {
         return connection;
     }
