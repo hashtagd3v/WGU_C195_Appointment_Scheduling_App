@@ -10,7 +10,7 @@ public class DBConnection {
     //JDBC URL parts
     private static final String protocol = "jdbc";
     private static final String vendorName = ":mysql:";
-    private static final String serverName = "//wgudb.ucertify.com/WJ05nOb";
+    private static final String serverName = "//<HOST>/<DATABASE>";
 
     //JDBC URL
     private static final String jdbcURL = protocol + vendorName + serverName;
@@ -19,8 +19,8 @@ public class DBConnection {
     private static final String MYSQLJDBCDriver = "com.mysql.cj.jdbc.Driver";
     public static Connection connection;
 
-    private static final String userName = "U05nOb";
-    private static final String password = "53688555917";
+    private static final String userName = "<USER>";
+    private static final String password = "<PASSWORD>";
 
     /** This method creates a connection to the database.
      * @return Returns database connection.*/
