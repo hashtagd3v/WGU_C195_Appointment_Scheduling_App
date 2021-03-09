@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fix bug in UpdateAppointmentController.java: Bypassed overlap appointment check method and enable user to update appointment itself.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DBConnection.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/STUDY/C195" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -281,13 +281,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00032" summary="Implemented update customer features in UpdateCustomerController.java; successfully updated customers database.">
-      <created>1611210765565</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1611210765565</updated>
     </task>
     <task id="LOCAL-00033" summary="Implemented delete customer feature in CustomerTableViewController.java and UpdateCustomerController.java; successfully deleted selected customers from both screens.">
       <created>1611211734361</created>
@@ -625,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615164329270</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Fix bug in UpdateAppointmentController.java: Bypassed overlap appointment check method and enable user to update appointment itself.">
+      <created>1615257843461</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1615257843462</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
