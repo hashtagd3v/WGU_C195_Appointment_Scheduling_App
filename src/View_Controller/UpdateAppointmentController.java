@@ -300,8 +300,14 @@ public class UpdateAppointmentController implements Initializable {
         for (int i = 0; i < apptMatches.size(); i++) {
 
             Appointment appt = apptMatches.get(i);
+            int appointmentId = appt.getAppointmentId();
             LocalDateTime startAppt = appt.getStart();
             LocalDateTime endAppt = appt.getEnd();
+
+            //Check apptId is not equal to appointmentId to bypass overlap check and allow user to update:
+            if (appointmentId == apptId) {
+                break;
+            }
 
             if ( startLDT.isAfter(startAppt.minusMinutes(1)) && startLDT.isBefore(endAppt.plusMinutes(1)) )  {
 

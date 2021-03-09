@@ -1,8 +1,8 @@
 # Appointment Scheduling App
 
-Appointment Scheduling App is an application written in Java that enables a user to log in, add/delete/update a customer
-to the database, add/delete/update an appointment to the database, and run several reports. This app also tracks successful
-and failed user log ins to a text file.
+Appointment Scheduling App is an application written in Java that is connected to a mySql Database and performs CRUD operations.
+This app enables a user to log in, add/delete/update a customer to the database, add/delete/update an appointment to the database,
+and run several reports. This app also tracks successful and failed user log ins to a text file (login_activity.txt).
 
 # Further App Info:
 
@@ -36,5 +36,6 @@ delete customers. Select Appointments to go to the list of appointments (also sh
 delete appointments. To run reports, select Appointments on the Welcome screen. Select "Reports" then choose between
 three available reports: Sort Customer Appointments (generates a report for number of appointments by type per month),
 Contact Appointment Schedule (generates a report for listing appointments by contact name), and lastly, Appointments Today
-(generates a report that shows scheduled appointments for current day).
+Report is the third chosen report (generates a convenient report for the user to quickly check scheduled appointments
+for current day).
 
