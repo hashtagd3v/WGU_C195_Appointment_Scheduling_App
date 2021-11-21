@@ -1,5 +1,5 @@
 # WGU_C195_Appointment_Scheduling_App SOFTWARE II - ADVANCED JAVA CONCEPTS — C195
-This is an app that lets you schedule and manage appointments and customers. Connected to a mySQL database.
+This is an app that lets you schedule and manage appointments and customers. Connected to a mySQL database. mySQL DB in code no longer exist. Will need to set up a new DB.
 
 SCENARIO:
 You are working for a software company that has been contracted to develop a GUI-based scheduling desktop application.
